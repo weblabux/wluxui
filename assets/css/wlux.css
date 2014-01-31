@@ -1,0 +1,68 @@
+/*!
+ * wlux.css
+ *
+ * Include this stylesheet after bootstrap.css. 
+ *
+ * Use the top of this stylesheet to override aspects of bootstrap that we 
+ * need to customize for WLUX look and feel.
+ *
+ * And use the bottom of this stylesheet to create WLUX specific styles.
+ */
+
+
+/* Style definitions that specifically override and customize aspects of bootstrap. */
+body {
+    padding-top: 0px;
+    padding-bottom: 40px;
+}
+
+.navbar-inner {
+    background-color: #102288; 
+    background-image: none;
+    background-repeat: no-repeat;
+    filter: none;
+}
+
+.navbar .brand {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 24px;
+    padding: 17px 30px 2px;
+}
+
+.navbar .nav > li > a {
+    color: #BBBBBB;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 16px;
+    padding: 20px 20px 1px;
+}
+
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+    background-color: transparent;
+}
+
+/* Additional style definitions for WLUX go below this line */
+
+.wlux-static-info {
+	// padding-left: 10px;
+}
+
+h1.wlux-static-info {                /*  use h1 for the in-page content title on static pages */
+	//padding-top: 50px 0px 20px 0px;
+	color: #333333;
+}
+
+.wlux-static-footer {
+	padding-top: 100px;
+}
+
+.wlux-study-listing {
+    
+}
+

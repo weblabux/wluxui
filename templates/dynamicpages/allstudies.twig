@@ -1,0 +1,17 @@
+{% extends 'layoutloggedin.twig' %}
+
+{% block body %}
+
+<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
+<p class="row">We need more UI here....</p>
+<div class="row">
+	{% for study in studies %}
+		<div>
+			<p><a href="{{ study.url }}">{{ study.name }}</a></p>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
+ 
+
