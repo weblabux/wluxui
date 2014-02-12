@@ -1,0 +1,27 @@
+{% extends 'layoutloggedin.twig' %}
+
+{% block body %}
+
+<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
+<p class="row">Create New Study</p>
+<div class="row">
+	<form action="">
+		<p>Study</p>
+		<div id="study">
+			<div id="name">Name: <input type="text" name=""></div>
+		</div>
+			<div id="description">Description: <input type="text" name=""></div>
+		<p>Researcher</p>
+		<div id="researcher">
+			<div id="organization">Organization Name: <input type="text" name="name"></div>
+			<div id="firstname">First Name: <input type="text" name="name"></div>
+			<div id="lastname">Last Name: <input type="text" name="name"></div>
+			<div id="email">Email: <input type="text" name="name"></div>
+		</div>
+		<input type="submit" value="{{ pageData.submit_text }}">
+	</form>
+</div>
+
+{% endblock %}
+ 
+
