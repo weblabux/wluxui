@@ -66,3 +66,50 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
     
 }
 
+.submenu {
+	box-shadow: 0px 5px #E7E7E7;
+	padding-bottom: 5px;
+}
+
+.submenu  li{
+	display: inline;
+	margin-right: 20px;
+}
+
+.submenu #selected {
+	font-size: 22pt;
+}
+
+.form_label {
+	float: left;
+	clear: both;
+	margin-left: 4em;
+}
+
+#study .form_label {
+	width: 7em;
+}
+
+#researcher .form_label {
+	width: 12em;
+}
+
+#createstudyform input {
+	margin-bottom: 7px;
+}
+
+#study input, #study textarea {
+	width: 30em;
+}
+
+#study textarea{
+	height: 8em;
+}
+
+#researcher input {
+	width: 18em;
+}
+
+#submit {
+	margin-left: 45em;
+}
