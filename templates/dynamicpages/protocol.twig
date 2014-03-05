@@ -1,0 +1,28 @@
+{% extends 'layoutloggedin.twig' %}
+
+{% block body %}
+
+<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
+<ul class="row submenu">
+	<li id="menutitle">Create New Study</li>
+	<li>General</li>
+	<li>Protocol</li>
+	<li>Variables</li>
+	<li>Session</li>
+</ul>
+<div class="arrow-down" id="protocol_triangle"></div>
+<div class="row">
+	<form id="createstudy" action="createstudy-variables" method="post">
+		<h2>Pre-Study</h2>
+		<p class="subtext" id="new_prestudy">+ Add New Pre Study Component</p>
+		<h2>Tasks</h2>
+		<p class="subtext" id="new_task">+ Add New Task</p>
+		<h2>Post-Study</h2>
+		<p class="subtext" id="new_poststudy">+ Add New Post-Study Component</p>
+		<input id="submit" type="submit" value="{{ pageData.submit_text }}">
+	</form>
+</div>
+
+{% endblock %}
+ 
+

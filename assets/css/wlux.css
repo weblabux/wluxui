@@ -69,6 +69,7 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 .submenu {
 	box-shadow: 0px 5px #E7E7E7;
 	padding-bottom: 5px;
+	margin-bottom: 0;
 }
 
 .submenu  li{
@@ -76,7 +77,7 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 	margin-right: 20px;
 }
 
-.submenu #selected {
+.submenu #menutitle {
 	font-size: 22pt;
 }
 
@@ -94,8 +95,25 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 	width: 12em;
 }
 
-#createstudyform input {
+#createstudy input {
+	margin-top: 7px;
 	margin-bottom: 7px;
+}
+
+#createstudy h2 {
+	background-color: darkgrey;
+	font-size: 20pt;
+	width: 26em;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.subtext {
+	color: darkgrey;
+	padding-left: 6px;
+	padding-right: 6px;
 }
 
 #study input, #study textarea {
@@ -112,4 +130,29 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 
 #submit {
 	margin-left: 45em;
+}
+
+.arrow-down {
+	width: 0px;
+	height: 0px;
+	margin-bottom: 10px;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-top: 12px solid #E7E7E7;
+}
+
+#general_triangle {
+	margin-left: 17em;
+}
+
+#protocol_triangle {
+	margin-left: 22.5em;
+}
+
+#variables_triangle {
+	margin-left: 28.5em;
+}
+
+#session_triangle {
+	margin-left: 34em;
 }

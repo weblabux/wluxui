@@ -4,14 +4,15 @@
 
 <h1 class="row wlux-static-info">{{ pageData.title }}</h1>
 <ul class="row submenu">
-	<li id="selected">Create New Study</li>
+	<li id="menutitle">Create New Study</li>
 	<li>General</li>
 	<li>Protocol</li>
 	<li>Variables</li>
 	<li>Session</li>
 </ul>
+<div class="arrow-down" id="general_triangle"></div>
 <div class="row">
-	<form id="createstudyform" action="">
+	<form id="createstudy" action="createstudy-protocol" method="post">
 		<p>Study</p>
 		<div id="study">
 			<div class="form_label">Name: </div><div><input type="text" name=""></div>
