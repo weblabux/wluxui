@@ -1,0 +1,30 @@
+{% extends 'layoutloggedin.twig' %}
+
+{% block body %}
+
+<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
+<ul class="row submenu">
+	<li id="menutitle">Create New Study</li>
+	<li>General</li>
+	<li>Protocol</li>
+	<li>Variables</li>
+	<li>Session</li>
+</ul>
+<div class="arrow-down" id="variables_triangle"></div>
+<div class="row create_study_variables">
+	<form id="createstudy" action="createstudy-session" method="post">
+		<h2>Variables</h2>
+		<p class="subtext" id="new_variable">+ Click to add a new study variable</p>
+		<div id="variable">
+			<div class="form_label">Variable Name:</div><div><input type="text" name=""></div>
+			<div class="form_label">Variable Description:</div><div><textarea name="" rows="4" cols="40"></textarea></div>
+			<div class="form_label">Variable URL:</div><div><input type="text" value="http://" name=""></div>
+			<button type="button" id="addvariable">Add Variable</button>
+		</div>
+		<input id="submit" type="submit" value="{{ pageData.submit_text }}">
+	</form>
+</div>
+
+{% endblock %}
+ 
+

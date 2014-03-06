@@ -86,6 +86,42 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                 'studies' => studiesGetAll(),
             ));
             break;
+			
+		case '/createstudy':
+			echo $twig->render('dynamicpages/newstudy.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Create Study',
+					'submit_text' => 'Continue',
+                ),
+            ));
+			break;
+			
+		case '/createstudy-protocol':
+			echo $twig->render('dynamicpages/protocol.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Create Study',
+					'submit_text' => 'Continue',
+                ),
+            ));
+			break;
+			
+		case '/createstudy-variables':
+			echo $twig->render('dynamicpages/variables.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Create Study',
+					'submit_text' => 'Continue',
+                ),
+            ));
+			break;
+			
+		case '/createstudy-session':
+			echo $twig->render('dynamicpages/session.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Create Study',
+					'submit_text' => 'Submit',
+                ),
+            ));
+			break;
 
         // Bad dynamic page URI - or unimplimented feature!
         // This is fast placeholder -- this really needs to be made far more robust! 

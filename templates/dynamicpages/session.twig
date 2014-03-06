@@ -1,0 +1,33 @@
+{% extends 'layoutloggedin.twig' %}
+
+{% block body %}
+
+<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
+<ul class="row submenu">
+	<li id="menutitle">Create New Study</li>
+	<li>General</li>
+	<li>Protocol</li>
+	<li>Variables</li>
+	<li>Session</li>
+</ul>
+<div class="arrow-down" id="session_triangle"></div>
+<div class="row create_study_session">
+	<form id="createstudy" action="createstudy-submit" method="post">
+		<h2>Sessions</h2>
+		<p class="subtext" id="new_session">+ Click to add a new study session</p>
+		<div id="session">
+			<div class="form_label">Session Title:</div><div><input type="text" name=""></div>
+			<div class="form_label">Session Description:</div><div><textarea name="" rows="4" cols="40"></textarea></div>
+			<div class="form_label">Session Size:</div><div><input type="number" name=""></div>
+			<div class="form_label">Start Time:</div><div><input type="date" name=""><input type="time" name=""></div>
+			<div class="form_label">End Time:</div><div><input type="date" name=""><input type="time" name=""></div>
+			<div class="form_label">Duration:</div><div><input type="number" name=""></div>
+			<button type="button" id="addsession">Add Session</button>
+		</div>
+		<input id="submit" type="submit" value="{{ pageData.submit_text }}">
+	</form>
+</div>
+
+{% endblock %}
+ 
+
