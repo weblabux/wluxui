@@ -66,11 +66,8 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
     
 }
 
-<<<<<<< HEAD
 
 /* Create study page CSS starts here */
-=======
->>>>>>> dd628bd90c4257f747c0bf684c72ac8509c8a40f
 .submenu {
 	box-shadow: 0px 5px #E7E7E7;
 	padding-bottom: 5px;
@@ -89,7 +86,6 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 .form_label {
 	float: left;
 	clear: both;
-<<<<<<< HEAD
 	margin-top: 5px;
 }
 
@@ -139,30 +135,13 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 	margin-left: 1em;
 }
 
-=======
-	margin-left: 4em;
-}
-
-#study .form_label {
-	width: 7em;
-}
-
-#researcher .form_label {
-	width: 12em;
-}
-
->>>>>>> dd628bd90c4257f747c0bf684c72ac8509c8a40f
 #createstudy input {
 	margin-top: 7px;
 	margin-bottom: 7px;
 }
 
 #createstudy h2 {
-<<<<<<< HEAD
 	background-color: #A1B1D6;
-=======
-	background-color: darkgrey;
->>>>>>> dd628bd90c4257f747c0bf684c72ac8509c8a40f
 	font-size: 20pt;
 	width: 26em;
 	padding-left: 6px;
@@ -177,7 +156,6 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 	padding-right: 6px;
 }
 
-<<<<<<< HEAD
 .create_study_session #session, .create_study_variables #variable{
 	padding: 10px;
 	display: none;
@@ -185,18 +163,6 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 
 #createstudy button {
 	margin-left: 30em;
-=======
-#study input, #study textarea {
-	width: 30em;
-}
-
-#study textarea{
-	height: 8em;
-}
-
-#researcher input {
-	width: 18em;
->>>>>>> dd628bd90c4257f747c0bf684c72ac8509c8a40f
 }
 
 #submit {
@@ -226,10 +192,6 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 
 #session_triangle {
 	margin-left: 34em;
-<<<<<<< HEAD
 }
 
 /* Create study page CSS ends here */
-=======
-}
->>>>>>> dd628bd90c4257f747c0bf684c72ac8509c8a40f
