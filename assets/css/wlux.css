@@ -66,3 +66,132 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
     
 }
 
+
+/* Create study page CSS starts here */
+.submenu {
+	box-shadow: 0px 5px #E7E7E7;
+	padding-bottom: 5px;
+	margin-bottom: 0;
+}
+
+.submenu  li{
+	display: inline;
+	margin-right: 20px;
+}
+
+.submenu #menutitle {
+	font-size: 22pt;
+}
+
+.form_label {
+	float: left;
+	clear: both;
+	margin-top: 5px;
+}
+
+.create_study_general #study .form_label, 
+.create_study_general #researcher .form_label {
+	margin-left: 4em;
+}
+
+.create_study_general #study .form_label {
+	width: 7em;
+}
+
+.create_study_general #researcher .form_label, 
+.create_study_session #session .form_label, 
+.create_study_variables #variable .form_label{
+	width: 12em;
+}
+
+.create_study_general #study input, 
+.create_study_general #study textarea{
+	width: 30em;
+}
+
+.create_study_variables #variable input, 
+.create_study_variables #variable textarea {
+	width: 24em;
+}
+
+.create_study_general #study textarea{
+	height: 8em;
+}
+
+.create_study_general #researcher input {
+	width: 18em;
+}
+
+#createstudy input[type="number"] {
+	width: 5em;
+}
+
+#createstudy input[type="date"] {
+	width: 10em;
+}
+
+#createstudy input[type="time"] {
+	width: 5em;
+	margin-left: 1em;
+}
+
+#createstudy input {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+#createstudy h2 {
+	background-color: #A1B1D6;
+	font-size: 20pt;
+	width: 26em;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.subtext {
+	color: darkgrey;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.create_study_session #session, .create_study_variables #variable{
+	padding: 10px;
+	display: none;
+}
+
+#createstudy button {
+	margin-left: 30em;
+}
+
+#submit {
+	margin-left: 45em;
+}
+
+.arrow-down {
+	width: 0px;
+	height: 0px;
+	margin-bottom: 10px;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-top: 12px solid #E7E7E7;
+}
+
+#general_triangle {
+	margin-left: 17em;
+}
+
+#protocol_triangle {
+	margin-left: 22.5em;
+}
+
+#variables_triangle {
+	margin-left: 28.5em;
+}
+
+#session_triangle {
+	margin-left: 34em;
+}
+
+/* Create study page CSS ends here */
