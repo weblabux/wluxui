@@ -2,6 +2,30 @@
 
 {% block body %}
 
-	<h1 class="wlux-static-info">{{ pageData.title }}</h1>
-	<p class="wlux-static-info">This is the homepage that appears when the researcher is not logged in.</p>
+<div class="container"> 
+	
+<!--here is the html of the two content from Lasifu Ta, Tongfang Sun--> 
+    
+    <div><!--sign up part-->
+        <form id ="home-signup">
+            <h1>Sign Up</h1>
+            <input class="span2" type="text" placeholder="First Name"> 
+            <input class="span2" type="text" placeholder="Last Name"></br></br>
+            <input class="span4" type="text" placeholder="Email"></br></br>
+            <input class="span4" type="text" placeholder="Confirm Email"></br></br>
+            <input class="span4" type="password" placeholder="Password"></br></br>
+            <input class="span4" type="password" placeholder="Confirm Password"></br></br>
+            <button type="submit" class="btn">Sign Up</button></br></br>
+        </form>
+    </div>
+
+     <div id ="home-intro"> <!--Information part need some images and introduction?-->
+        <div>
+        <h1 class="wlux-static-info">{{ pageData.title }}</h1>
+            <img src="main.jpg" alt="WebLabUX" width="700" height="800">
+        </div>
+     </div> 
+<!--ends here-->
+</div>
+
 {% endblock %}
