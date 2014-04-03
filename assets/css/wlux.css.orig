@@ -83,33 +83,7 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
     
 }
 
-#home-intro{
-    float: left;
-}
-
-#home-signup{
-    float: right;
-}
-#loginerror
-{
-    border:solid;
-    border-width:1px;
-    border-color:red;
-    background-color:rgb(255,235,232);
-    padding-right:50px;
-    padding-left:5px;
-    line-height:2em;
-}
-#error_signup_button{
-    background-color:rgb(59,89,152);
-    color:white;
-    font-weight:600;
-    line-height:2em;
-    padding-left:15px;
-    padding-right:15px;
-}
-
-    
+<<<<<<< HEAD
 
 /* Create study page CSS starts here */
 .submenu {
@@ -239,3 +213,32 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 }
 
 /* Create study page CSS ends here */
+=======
+#home-intro{
+    float: left;
+}
+
+#home-signup{
+    float: right;
+}
+#loginerror
+{
+    border:solid;
+    border-width:1px;
+    border-color:red;
+    background-color:rgb(255,235,232);
+    padding-right:50px;
+    padding-left:5px;
+    line-height:2em;
+}
+#error_signup_button{
+    background-color:rgb(59,89,152);
+    color:white;
+    font-weight:600;
+    line-height:2em;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+    
+>>>>>>> 1642fa23e9cd99e312b02e63fd54abfd2b616590

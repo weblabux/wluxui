@@ -66,8 +66,8 @@ $twig->addExtension(new Twig_Extension_Debug());
  *
  *   THIS WILL NEED TO BE RIPPED OUT AND REPLACED WITH WHATEVER MECHANISM WE ARE USING FOR AUTH... 
  */
-$loggedin = true;
-//$loggedin = false;
+//$loggedin = true;
+$loggedin = false;
 
 /* 
  * MAIN UI BRANCH & SWITCH 
@@ -166,6 +166,14 @@ else {                  // Render static pages for someone who is not logged int
             echo $twig->render('staticpages/tutorials.twig', array(
                 'pageData' => array(
                     'title' => 'WebLabUX Tutorial',
+                ),
+            ));
+            break;
+
+        case '/error':
+            echo $twig->render('staticpages/error.twig', array(
+                'pageData' => array(
+                    'title' => 'WebLabUX',
                 ),
             ));
             break;
