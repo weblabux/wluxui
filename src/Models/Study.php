@@ -1,7 +1,8 @@
 <?php
 
 /**
- * I modified this class, see the old classs below
+ * Modified by Mark Stamnes Winter 2014. COnstructor is a closer match to the graphic
+ * layout page design (see photoshop page layout designs)
  */
 class Study {
 	private $name;

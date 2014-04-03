@@ -1,5 +1,5 @@
 <?php
-
+/*Modified by Mark Stamnes - These functions are bare bones */
 /* Returns all studies in the study_general table */
 function _get_all_studies() {
 	require 'config_files.php';
