@@ -47,6 +47,17 @@ body {
     background-color: transparent;
 }
 
+
+/*ADDED 2/26/14 BY ANTONIO RODRIGUEZ*/
+.row {
+	margin-left: 0;
+}
+
+form.all_more {
+	margin: 0;
+}
+
+
 /* Additional style definitions for WLUX go below this line */
 
 .wlux-static-info {
@@ -84,6 +95,33 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 }
 
 <<<<<<< HEAD
+#home-intro{
+    float: left;
+}
+
+#home-signup{
+    float: right;
+}
+#loginerror
+{
+    border:solid;
+    border-width:1px;
+    border-color:red;
+    background-color:rgb(255,235,232);
+    padding-right:50px;
+    padding-left:5px;
+    line-height:2em;
+}
+#error_signup_button{
+    background-color:rgb(59,89,152);
+    color:white;
+    font-weight:600;
+    line-height:2em;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+    
 
 /* Create study page CSS starts here */
 .submenu {
@@ -142,103 +180,72 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 
 #createstudy input[type="number"] {
 	width: 5em;
-}
-
-#createstudy input[type="date"] {
-	width: 10em;
-}
-
-#createstudy input[type="time"] {
-	width: 5em;
-	margin-left: 1em;
-}
-
-#createstudy input {
-	margin-top: 7px;
-	margin-bottom: 7px;
-}
-
-#createstudy h2 {
-	background-color: #A1B1D6;
-	font-size: 20pt;
-	width: 26em;
-	padding-left: 6px;
-	padding-right: 6px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-
-.subtext {
-	color: darkgrey;
-	padding-left: 6px;
-	padding-right: 6px;
-}
-
-.create_study_session #session, .create_study_variables #variable{
-	padding: 10px;
-	display: none;
-}
-
-#createstudy button {
-	margin-left: 30em;
-}
-
-#submit {
-	margin-left: 45em;
-}
-
-.arrow-down {
-	width: 0px;
-	height: 0px;
-	margin-bottom: 10px;
-	border-left: 12px solid transparent;
-	border-right: 12px solid transparent;
-	border-top: 12px solid #E7E7E7;
-}
-
-#general_triangle {
-	margin-left: 17em;
-}
-
-#protocol_triangle {
-	margin-left: 22.5em;
-}
-
-#variables_triangle {
-	margin-left: 28.5em;
-}
-
-#session_triangle {
-	margin-left: 34em;
-}
-
-/* Create study page CSS ends here */
 =======
-#home-intro{
-    float: left;
+/*ADDED WINTER 2014 BY ANTONIO RODRIGUEZ*/
+#wrapper {
+    width: 1070px;
+    margin: 0;
+>>>>>>> 46205900642d670af0d773e6dab343d6c35f07ff
 }
 
-#home-signup{
-    float: right;
-}
-#loginerror
-{
-    border:solid;
-    border-width:1px;
-    border-color:red;
-    background-color:rgb(255,235,232);
-    padding-right:50px;
-    padding-left:5px;
-    line-height:2em;
-}
-#error_signup_button{
-    background-color:rgb(59,89,152);
-    color:white;
-    font-weight:600;
-    line-height:2em;
-    padding-left:15px;
-    padding-right:15px;
+#left_column {
+float: left;
+    width: 750px;
+    margin: 0;
 }
 
-    
->>>>>>> 1642fa23e9cd99e312b02e63fd54abfd2b616590
+#right_column {
+float: right;
+    width: 300px;
+}
+
+table.all {
+width: 748px;
+border: 1px solid silver;
+}
+
+table.right {
+width: 298px;
+border: 1px solid silver;
+}
+
+thead.all_head {
+background-color: silver;
+}
+
+tr.all_row {
+padding: 20px;
+}
+
+tr.all_row:hover {
+background-color: yellow;
+}
+
+tr.right_row {
+padding: 20px;
+}
+
+th.header {
+text-align: left;
+padding: 10px;
+}
+
+td.cell {
+text-align: left;
+padding: 5px 10px;
+}
+
+td.right_title {
+text-align:center;
+padding: 10px 30px;
+}
+
+p.all_description {
+font-size: 12px;
+color: gray;
+}
+
+#right_table_options {
+float:right;
+}
+

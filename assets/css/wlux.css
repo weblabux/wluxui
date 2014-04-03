@@ -47,6 +47,17 @@ body {
     background-color: transparent;
 }
 
+
+/*ADDED 2/26/14 BY ANTONIO RODRIGUEZ*/
+.row {
+	margin-left: 0;
+}
+
+form.all_more {
+	margin: 0;
+}
+
+
 /* Additional style definitions for WLUX go below this line */
 
 .wlux-static-info {
@@ -110,132 +121,70 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 }
 
     
-
-/* Create study page CSS starts here */
-.submenu {
-	box-shadow: 0px 5px #E7E7E7;
-	padding-bottom: 5px;
-	margin-bottom: 0;
+/*ADDED WINTER 2014 BY ANTONIO RODRIGUEZ*/
+#wrapper {
+    width: 1070px;
+    margin: 0;
 }
 
-.submenu  li{
-	display: inline;
-	margin-right: 20px;
+#left_column {
+float: left;
+    width: 750px;
+    margin: 0;
 }
 
-.submenu #menutitle {
-	font-size: 22pt;
+#right_column {
+float: right;
+    width: 300px;
 }
 
-.form_label {
-	float: left;
-	clear: both;
-	margin-top: 5px;
+table.all {
+width: 748px;
+border: 1px solid silver;
 }
 
-.create_study_general #study .form_label, 
-.create_study_general #researcher .form_label {
-	margin-left: 4em;
+table.right {
+width: 298px;
+border: 1px solid silver;
 }
 
-.create_study_general #study .form_label {
-	width: 7em;
+thead.all_head {
+background-color: silver;
 }
 
-.create_study_general #researcher .form_label, 
-.create_study_session #session .form_label, 
-.create_study_variables #variable .form_label{
-	width: 12em;
+tr.all_row {
+padding: 20px;
 }
 
-.create_study_general #study input, 
-.create_study_general #study textarea{
-	width: 30em;
+tr.all_row:hover {
+background-color: yellow;
 }
 
-.create_study_variables #variable input, 
-.create_study_variables #variable textarea {
-	width: 24em;
+tr.right_row {
+padding: 20px;
 }
 
-.create_study_general #study textarea{
-	height: 8em;
+th.header {
+text-align: left;
+padding: 10px;
 }
 
-.create_study_general #researcher input {
-	width: 18em;
+td.cell {
+text-align: left;
+padding: 5px 10px;
 }
 
-#createstudy input[type="number"] {
-	width: 5em;
+td.right_title {
+text-align:center;
+padding: 10px 30px;
 }
 
-#createstudy input[type="date"] {
-	width: 10em;
+p.all_description {
+font-size: 12px;
+color: gray;
 }
 
-#createstudy input[type="time"] {
-	width: 5em;
-	margin-left: 1em;
+#right_table_options {
+float:right;
 }
 
-#createstudy input {
-	margin-top: 7px;
-	margin-bottom: 7px;
-}
-
-#createstudy h2 {
-	background-color: #A1B1D6;
-	font-size: 20pt;
-	width: 26em;
-	padding-left: 6px;
-	padding-right: 6px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-
-.subtext {
-	color: darkgrey;
-	padding-left: 6px;
-	padding-right: 6px;
-}
-
-.create_study_session #session, .create_study_variables #variable{
-	padding: 10px;
-	display: none;
-}
-
-#createstudy button {
-	margin-left: 30em;
-}
-
-#submit {
-	margin-left: 45em;
-}
-
-.arrow-down {
-	width: 0px;
-	height: 0px;
-	margin-bottom: 10px;
-	border-left: 12px solid transparent;
-	border-right: 12px solid transparent;
-	border-top: 12px solid #E7E7E7;
-}
-
-#general_triangle {
-	margin-left: 17em;
-}
-
-#protocol_triangle {
-	margin-left: 22.5em;
-}
-
-#variables_triangle {
-	margin-left: 28.5em;
-}
-
-#session_triangle {
-	margin-left: 34em;
-}
-
-/* Create study page CSS ends here */
