@@ -1,0 +1,190 @@
+/*!
+ * wlux.css
+ *
+ * Include this stylesheet after bootstrap.css. 
+ *
+ * Use the top of this stylesheet to override aspects of bootstrap that we 
+ * need to customize for WLUX look and feel.
+ *
+ * And use the bottom of this stylesheet to create WLUX specific styles.
+ */
+
+
+/* Style definitions that specifically override and customize aspects of bootstrap. */
+body {
+    padding-top: 0px;
+    padding-bottom: 40px;
+}
+
+.navbar-inner {
+    background-color: #102288; 
+    background-image: none;
+    background-repeat: no-repeat;
+    filter: none;
+}
+
+.navbar .brand {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 24px;
+    padding: 17px 30px 2px;
+}
+
+.navbar .nav > li > a {
+    color: #BBBBBB;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 16px;
+    padding: 20px 20px 1px;
+}
+
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+    background-color: transparent;
+}
+
+
+/*ADDED 2/26/14 BY ANTONIO RODRIGUEZ*/
+.row {
+	margin-left: 0;
+}
+
+form.all_more {
+	margin: 0;
+}
+
+
+/* Additional style definitions for WLUX go below this line */
+
+.wlux-static-info {
+    // padding-left: 10px;
+}
+
+h1.wlux-static-info {                /*  use h1 for the in-page content title on static pages */
+    //padding-top: 50px 0px 20px 0px;
+    color: #333333;
+}
+
+.wlux-static-footer {
+    width: 100%;
+    border-style:solid; 
+    border-width:10px 0 0 0;
+    border-color: gray;
+    background-color: rgb(200,200,200);
+    padding: 30px 0 30px 0;
+}
+
+#ahcr{
+    text-align:center;
+    color:blue;
+}
+.ahcrin{
+    padding: 0 1em 0 1em;
+}
+#announcement{
+    color: rgb(100,100,100);
+    text-align:center;
+}
+
+.wlux-study-listing {
+    
+}
+
+#home-intro{
+    float: left;
+}
+
+#home-signup{
+    float: right;
+}
+#loginerror
+{
+    border:solid;
+    border-width:1px;
+    border-color:red;
+    background-color:rgb(255,235,232);
+    padding-right:50px;
+    padding-left:5px;
+    line-height:2em;
+}
+#error_signup_button{
+    background-color:rgb(59,89,152);
+    color:white;
+    font-weight:600;
+    line-height:2em;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+    
+/*ADDED WINTER 2014 BY ANTONIO RODRIGUEZ*/
+#wrapper {
+    width: 1070px;
+    margin: 0;
+}
+
+#left_column {
+float: left;
+    width: 750px;
+    margin: 0;
+}
+
+#right_column {
+float: right;
+    width: 300px;
+}
+
+table.all {
+width: 748px;
+border: 1px solid silver;
+}
+
+table.right {
+width: 298px;
+border: 1px solid silver;
+}
+
+thead.all_head {
+background-color: silver;
+}
+
+tr.all_row {
+padding: 20px;
+}
+
+tr.all_row:hover {
+background-color: yellow;
+}
+
+tr.right_row {
+padding: 20px;
+}
+
+th.header {
+text-align: left;
+padding: 10px;
+}
+
+td.cell {
+text-align: left;
+padding: 5px 10px;
+}
+
+td.right_title {
+text-align:center;
+padding: 10px 30px;
+}
+
+p.all_description {
+font-size: 12px;
+color: gray;
+}
+
+#right_table_options {
+float:right;
+}
+
