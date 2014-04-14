@@ -37,6 +37,11 @@ footer {
 	background-color: #ffff00;
 }
 
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+	color: #333333;
+	background-color: #ffff00;
+}
+
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
 	color: #ffff00;
 }
@@ -44,6 +49,17 @@ footer {
 .navbar-default .navbar-nav>li>a {
 	color: #ffffff;
 	font-weight: bold;
+}
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: #ffffff;
+		font-weight: bold;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+		color: #ffff00;
+	}
+
 }
 
 .web-logo-style {
