@@ -2,7 +2,7 @@ body {
   padding-top: 8%;
 }
 
-.btn {
+a, .btn {
 	font-weight: bold;
 }
 
@@ -76,4 +76,20 @@ footer {
 
 .navbar-default .navbar-toggle .icon-bar {
 	background-color: #ffffff;
+}
+
+
+/* All Studies */
+
+#dashboard-total-studies {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.dashboard-icons {
+	font-size: 20px;
+}
+
+.glyphicon-padding-right {
+	padding-right: 10px;
 }
