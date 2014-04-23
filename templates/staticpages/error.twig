@@ -1,0 +1,49 @@
+
+
+
+{% extends 'layoutloggedout.twig' %}
+
+{% block body %}
+
+<div class="container"> 
+	
+<!--here is the html of the two content from Lasifu Ta, Tongfang Sun--> 
+    
+    <div><!--sing in error part-->
+	    <div id = "home-signup">
+	        <h1>Log In Error</h1>
+		    <div id = "loginerror">
+		    	<h4>Wrong Username and Password Combination</h4> 
+		    	Unfortunately, your username and password do not matched. <br/>Please patiently try again!
+		    </div>
+
+		    <h4>Or you can do...</h4>
+		    <a href = "../index.php" style = "text-decoration:none;">
+			    <button id = "error_signup_button" type = "button" action="http://www.sina.com.cn">
+			    	Sign Up
+			    </button>
+		    </a>
+		    <span style="margin-left:20px;">
+		    	Create a new account.
+		    </span>
+
+		    <div style = "margin-top:30px;">
+			    <a style = "line-height:2em;text-decoration:underline;">
+			    	Reset password.			    </a>
+			    <span style="margin-left:20px;">
+			    	Send the access code to your Email.
+			    </span>
+	    	</div>
+	    </div>
+    </div>
+
+     <div id ="home-intro"> <!--Information part need some images and introduction?-->
+        <div>
+        <h1 class="wlux-static-info">{{ pageData.title }}</h1>
+            <img src="../main.jpg" alt="WebLabUX" width="700" height="800">
+        </div>
+     </div> 
+<!--ends here-->
+</div>
+
+{% endblock %}
