@@ -1,0 +1,45 @@
+<html>
+<head>
+	<script src="bob.js"></script>
+	<script src="elisabeth.js"></script>
+    <script src="robert.js"></script>
+    <script src="alan.js"></script>
+    <script src="reem.js"></script>
+	<title>Hello Team</title>
+</head>	
+<body>
+<script type="text/javascript">
+
+// Note: Although this code is functionally 'correct' it leaves 
+// much room for refactoring. ;)
+
+// updateText takes a string and a document fragment.
+// It turns the string into a paragraph and appends the paragraph 
+// to the pre-defined document fragment, updating this document
+// fragment as a side effect!  
+function updateText( string, docFragment ) {
+	var p, t;
+	
+	p = document.createElement('p');
+	t = document.createTextNode(string);
+	p.appendChild(t);
+	docFragment.appendChild(p);
+}
+
+// textContent will be used to hold the paragraphs for page's content
+textContent = document.createDocumentFragment();
+
+// one by one, call all of the functions that add to the text content
+updateText(elisabeth(), textContent);
+updateText(bob(), textContent);
+updateText(robert(), textContent);
+// Note: we need to add more function here for everyone to say hello.
+
+// append the text content to the document
+document.body.appendChild(textContent);
+
+</script>
+</body>
+</html>	
+		
+

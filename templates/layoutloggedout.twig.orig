@@ -18,19 +18,41 @@
 
     <!-- But Bootstrap requires CSS restyling to make it look unique. More CSS restyling will -->
     <!-- be needed so hack on our local stylesheet,  NOT on the bootstrap.css sheet. -->
+<<<<<<< HEAD
+    <link href="/wluxui/assets/css/wlux.css" rel="stylesheet">
+=======
     <link href="/wluxui/assets/css/style.css" rel="stylesheet"> 
+>>>>>>> 4ab0117d02aff6318b73e3c2eade746ba220d11a
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="/wluxui/assets/js/html5shiv.js"></script>
     <![endif]-->
-	
-	<script language="javascript" type="text/javascript" src="/wluxui/assets/js/createstudy.js"></script>
+    
+    <script language="javascript" type="text/javascript" src="/wluxui/assets/js/createstudy.js"></script>
 
 </head>
 
 <body>
 
+<<<<<<< HEAD
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/wluxui/index.php"><strong>WEB</strong>LAB<span style="color:yellow">UX</span></a>
+                <ul class="nav">
+                    <li><a href="/wluxui/index.php/about">ABOUT</a></li>
+                    <li><a href="/wluxui/index.php/howitworks">HOW IT WORKS</a></li>
+                    <li><a href="/wluxui/index.php/tutorials">TUTORIALS</a></li>
+                </ul>
+                <form class="navbar-form pull-right">
+                    <input class="span2" type="text" placeholder="Email">
+                    <input class="span2" type="password" placeholder="Password">
+                    <button type="submit" class="btn">Sign in</button></br>
+                    <input type="checkbox" name="checkbox1" value="checkbox"><span style = "color:white;" >&nbsp Keep Me Signed In.</span>
+                    <a  href = "#" class="navbar-form pull-right"><span style = "color:white;" >Reset Password.</span></a>
+                </form>
+=======
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -41,22 +63,30 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/wluxui/index.php/allstudies"><span class="weblabux-logo"><span class="web-logo-style">WEB</span>LAB<span class="lab-logo-style">UX</span></span></a>
+>>>>>>> 4ab0117d02aff6318b73e3c2eade746ba220d11a
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li><a href="/wluxui/index.php/allstudies">ALL STUDIES</a></li>
-            <li><a href="/wluxui/index.php/resources">RESOURCES</a></li>
-            <li><a href="/wluxui/index.php/collaborators">COLLABORATORS</a></li>
-            <li class="dropdown">
-                <a href="#/" class="dropdown-toggle" data-toggle="dropdown">Hi, [username] <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="">Sign Out</a></li>
-                </ul>
-            </li>
+            <li><a href="/wluxui/index.php/about">ABOUT</a></li>
+            <li><a href="/wluxui/index.php/howitworks">HOW IT WORKS</a></li>
+            <li><a href="/wluxui/index.php/tutorials">TUTORIALS</a></li>
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default">Sign in</button>
+          </form>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
+<<<<<<< HEAD
+</div>    
+=======
+>>>>>>> 4ab0117d02aff6318b73e3c2eade746ba220d11a
 
     <div class="container" id="main-container">
 
@@ -71,7 +101,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/wluxui/assets/js/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
