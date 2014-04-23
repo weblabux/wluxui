@@ -2,18 +2,11 @@
 
 {% block body %}
 <h1>{{ pageData.title }}</h1>
-<h3>Studies Running Complete Draft Archived</h3>
-<div id="wrapper">
-  <div id="left_column">
-    <table class="all">
-      <thead class="all_head">
-        <tr>
-          <th class="header">Study Name</th>
-          <th class="header">Status</th>
-          <th class="header">Date Created</th>
-          <th class="header"><a href="newstudy.php">+ New Study</a></th>
-        </tr>
-      </thead>
+<h1>{{ pageData.title }}</h1>
+      <div class="row">
+        <div class="col-md-8">
+            <div class="table-responsive">
+              <table class="table">
     </table>
     <table class="table table-hover">
       <thead>
@@ -23,21 +16,31 @@
           <th>Date Created</th>
         </tr>
       </thead>
-      <tbody>
-      {% for study in studies %}
-      <tr class="all_row">
-        <td class="cell"><em>{{ study.name }}</em> <br />
-          <p class="all_description"> {{ study.description }}</p></td>
-        <td class="cell"> {{study.status}} </td>
-        <td class="cell"> {{study.dateCreated}} </td>
-        <td class="cell">
-          <form class="all_more" method="post">
-            <button name="more" type="submit" value="{{study.name}}" id="{{study.name}}">Study Details &gt;</button>
-          </form></td>
-      </tr>
-      {% endfor %}
-	  </tbody>
-    </table>
+                <tbody>
+                  <tr class="text-center">
+                    <td>
+                      <h4>TOTAL STUDIES</h4>
+                      <span id="dashboard-total-studies">14</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-repeat glyphicon-padding-right"></span> RUNNING</h5>
+                      <span class="dashboard-icons">10</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-ok glyphicon-padding-right"></span> COMPLETE</h5>
+                      <span class="dashboard-icons">3</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-pencil glyphicon-padding-right"></span> DRAFT</h5>
+                      <span class="dashboard-icons">1</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-book glyphicon-padding-right"></span> ARCHIVED</h5>
+                      <span class="dashboard-icons">0</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
     <h4>Study Details</h4>
     <div class="col-md-6 text-right">
       <div class="btn-group">
@@ -78,41 +81,107 @@
         <p class="text-center">Period DATA goes here</p>
       </div>
     </div>
-  </div>
-  <div id="right_column">
-    <table class="right">
-      <thead class="all_head">
-        <tr>
-          <th class="header">Study Details
-            <div id="right_table_options"> <a href="#">Edit</a> <span> | </span> <a href="#">Data</a> </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="right_row">
-            <td class="right_title">studyName --should be hyperlinked--</td>
-          </tr>
-          <tr class="all_row_right">
-            <td><p>Last Modified: dateModified</p></td>
-          </tr>
-          <tr class ="all_row_right">
-            <td><p>Organization: researcherOrg</p></td>
-          </tr>
-      </tbody>
-    </table>
-    <table class="right">
-	   <thead class="all_head">
-         <tr>
-          <th class="header">Study Periods</th>
-         </tr>
-       </thead>
-        <tbody>
-          <tr class="right_row">
-            <td class="right_title"><p>Period DATA goes here</p></td>
-          </tr>
-        </tbody>
-     </table>
-   </div> <!-- END right_column -->
-</div>
-<!-- END wrapper --> 
+            </div>
+          <div class="panel panel-default">
+            <div class="panel-heading text-right">
+                <a href="/newstudy.php"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create Study</button></a>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Date Created</th>
+                  </tr>
+                </thead>
+                <tbody>
+  			    {% for study in studies %}
+                  <tr>
+                    <td class="text-center">
+                      <span class="glyphicon glyphicon-adjust"></span>
+                      <p>{{study.status}}</p>
+                    </td>
+                    <td>
+                      <a href="">{{study.name}}</a>
+                      <p>{{study.description}}</p>
+                    </td>
+                    <td>{{study.dateCreated}}</td>
+                  </tr>
+  			    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Study Summary</h4>
+                </div>
+                <div class="col-md-6 text-right">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-print"></span></button>              
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-download-alt"></span></button>
+                  </div>                
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+                <a href=""><h5> Eye Tracking</h5></a>
+              <div class="row">
+                <div class="col-md-8">
+                  <p>This is a test study used while developing new code.</p>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-default">Details <span class="glyphicon glyphicon-chevron-right"></span></button>              
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr class="active">
+                    <th>Sessions</th>
+                    <th>Participants</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for session in sessions %}
+                  <tr>
+                    <td>
+                      <h5>{{session.sessionName}}</h5>
+                      <p>Start Date: {{session.sessionStartDateTime}}</p>
+                      <p>End Date: {{session.sessionEndDateTime}}</p>
+                    </td>
+                    <td>
+                      <p>{{session.active}} Active</p>
+                      <p>{{session.completed}} Completed</p>
+                      <p>{{session.aborted}} Aborted</p>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+<!--
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Study Periods</h4>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <p class="text-center">Period DATA goes here</p>
+            </div>
+          </div>
+-->
+       </div>
+     </div>
+
 {% endblock %}
