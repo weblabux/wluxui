@@ -54,3 +54,4 @@ function sessionsGetAll() {
 	// new Study('Layout Study', '/wluxui/index.php/allstudies/#'),
 	// );
 }
+?>

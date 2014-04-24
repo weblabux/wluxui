@@ -33,5 +33,3 @@ function _get_all_sessions_by_studyId($studyId="1234",$studyPeriodId="1",$debugS
 _get_all_sessions();
 
 ?>
- 
-?>

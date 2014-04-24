@@ -68,5 +68,4 @@ class Study {
 		$this -> researcherEmail = $researcherEmail;
 	}
 }
-
-
+?>

@@ -190,4 +190,4 @@ else {                  // Render static pages for someone who is not logged int
             ));
     }
 }
-
+?>

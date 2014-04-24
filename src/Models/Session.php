@@ -68,4 +68,4 @@ class Session {
 		return $this -> aborted;
 	}
 }
-
+?>

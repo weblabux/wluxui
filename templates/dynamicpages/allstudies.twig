@@ -5,14 +5,7 @@
       <div class="row">
         <div class="col-md-8">
             <div class="table-responsive">
-			<table class="table table-hover">
-			  <thead>
-				<tr>
-				  <th>Study</th>
-				  <th>Status</th>
-				  <th>Date Created</th>
-				</tr>
-			  </thead>
+			<table class="table">
                 <tbody>
                   <tr class="text-center">
                     <td>
@@ -38,46 +31,6 @@
                   </tr>
                 </tbody>
               </table>
-    <h4>Study Details</h4>
-    <div class="col-md-6 text-right">
-      <div class="btn-group">
-        <button type="button" class="btn btn-success">Edit</button>
-        <button type="button" class="btn btn-default">Data</button>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Study</th>
-            <th>Last Modified</th>
-            <th>Group</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for study in studies %}
-        <tr>
-          <td><a href="">
-            <h5>{{study.name}}</h5>
-            </a></td>
-          <td>{{study.dateCreated}}</td>
-          <td>[organization]</td>
-        </tr>
-        {% endfor %}
-		</tbody>
-        </tr>
-      </table>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="row">
-          <div class="col-md-12">
-            <h4>Study Periods</h4>
-          </div>
-        </div>
-      </div>
-      <div class="panel-body">
-        <p class="text-center">Period DATA goes here</p>
-      </div>
-    </div>
             </div>
           <div class="panel panel-default">
             <div class="panel-heading text-right">
