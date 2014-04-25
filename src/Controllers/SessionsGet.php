@@ -2,9 +2,9 @@
 
 /* Returns real data from the database so just ignore Bob's
  * comments below. :) 4/2/2014 Modified by Mark Stamnes Winter 2014*/
-require 'data/get_all_studies.php';
+require 'data/get_all_sessions.php';
 
-function studiesGetAll() {
+function sessionsGetAll() {
 
 	// Lets make an empty array-------------------------------------
 	$array = array();
@@ -13,30 +13,31 @@ function studiesGetAll() {
 	// wlux_web_services/web/data folder (see require above)
 	// ** for now this just retrieves all the studies...
 	// ** will change and grow as we move forward
-	$result = _get_all_studies();
+	$result = _get_all_sessions();
 
 	// Lets process the results of the get all studies call
 	// ** I modified the Study class constructor to take study status, 
 	// ** researchers email, study name and study description
 	
 	while ($row = mysqli_fetch_array($result)) { // While we still have rows
-
+		//echo $row['studyId'];
+		
 		// Lets make a new study
-		$newStudy = new Study($row['studyStatus'], 
-		$row['studyName'], 
-		$row['researcherEmail'], 
-		$row['studyDescription'],
-		date("Y-m-d",strtotime($row['dateCreated'])),
-		$row['dateModified']);
+		$newSession = new Session($row['periodName'], 
+		$row['periodStartTime'], 
+		$row['periodEndTime'], 
+		25,
+		30,
+		10);
 
 		// Lets push it on to our array ($array)
-		array_push($array, $newStudy);
+		array_push($array, $newSession);
 		
 		// In case we get errors lets use these for screen dumps of our data
 		//var_dump($newStudy);
 		//var_dump($array);
 	}
-	
+
 	// Lets return our array
 	return $array;
 

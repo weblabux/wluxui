@@ -26,7 +26,8 @@
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/src/Models/Study.php';
 require __DIR__.'/src/Controllers/StudiesGet.php';
-
+require __DIR__.'/src/Models/Session.php';
+require __DIR__.'/src/Controllers/SessionsGet.php';
 /*
  * Within WebLabUX, every user-facing page (for the researcher) is rendered using Twig templates. 
  * The UI loop for researcher-facing WebLabUX is contained within this index.php file, and specific
@@ -84,6 +85,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - All Studies',
                 ),
                 'studies' => studiesGetAll(),
+                'sessions' => sessionsGetAll(),
             ));
             break;
 			
@@ -188,4 +190,4 @@ else {                  // Render static pages for someone who is not logged int
             ));
     }
 }
-
+?>
