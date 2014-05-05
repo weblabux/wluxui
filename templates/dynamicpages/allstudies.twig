@@ -49,14 +49,14 @@
                 </thead>
                 <tbody class="table-active">
   			    {% for study in studies %}
-                  <tr>
+                  <tr onclick="_get_all_sessions_by_studyId($studyId={{study.studyId}})">
                     <td class="text-center">
                     	<!-- Display the correct icon based on study status -->
-						{% if study.status == 'running' %}
+						{% if study.status == 'scheduled' %}
 						<span class="glyphicon glyphicon-repeat
 						"></span>
 						{% endif %}
-						{% if study.status == 'complete' %}
+						{% if study.status == 'completed' %}
 						<span class="glyphicon glyphicon-ok"></span>
 						{% endif %}
 						{% if study.status == 'draft' %}
