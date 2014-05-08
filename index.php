@@ -67,8 +67,9 @@ $twig->addExtension(new Twig_Extension_Debug());
  *
  *   THIS WILL NEED TO BE RIPPED OUT AND REPLACED WITH WHATEVER MECHANISM WE ARE USING FOR AUTH... 
  */
-$loggedin = true;
+//$loggedin = true;
 //$loggedin = false;
+$loggedin = !is_null($_COOKIE['weblabuxToken']);
 
 /* 
  * MAIN UI BRANCH & SWITCH 
