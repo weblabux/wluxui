@@ -23,7 +23,9 @@ function sessionsGetAll() {
 		//echo $row['studyId'];
 		
 		// Lets make a new study
-		$newSession = new Session($row['periodName'], 
+		$newSession = new Session($row['studyId'], 
+		$row['periodName'], 
+		$row['periodStartTime'], 		
 		$row['periodStartTime'], 
 		$row['periodEndTime'], 
 		25,
