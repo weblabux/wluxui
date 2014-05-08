@@ -1,6 +1,62 @@
 {% extends 'layoutloggedin.twig' %}
 
 {% block body %}
+
+{% block javascripts %}
+  <script type="text/javascript">
+    var getStudyDetails = function(studyId) {
+      var study = {};
+      study.sessions = [];
+      {% for study in studies %}
+        if ({{study.studyId}} == studyId) {
+          study.name = "{{study.name}}"
+          study.description = "{{study.description}}"
+        }
+      {% endfor %}
+      {% for session in sessions %}
+        if ({{session.studyId}} == studyId) {
+          var session = {
+            sessionName: "{{session.sessionName}}",
+            sessionStartDateTime : "{{session.sessionStartDateTime | date("M d, Y")}} at {{session.sessionStartDateTime | date("h:ia")}}",
+            sessionEndDateTime : "{{session.sessionEndDateTime | date("M d, Y")}} at {{session.sessionEndDateTime | date("h:ia")}}"
+          };
+          study.sessions.push(session);
+        }
+      {% endfor %}
+//      console.log(JSON.stringify(study));
+
+
+      jQuery("#sessions").html("");
+
+      var sessionHeader = "<div class='panel panel-default'><div class='panel-heading'><div class='row'><div class='col-md-6'><h4>Study Summary</h4></div><div class='col-md-6 text-right'><div class='btn-group'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-print'></span></button><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-download-alt'></span></button></div></div></div></div><div class='panel-body'><h4>" + study.name + "</h4><div class='row'><div class='col-md-7'><p>" + study.description + "</p></div><div class='col-md-5 text-right'><button type='button' class='btn btn-default'>Details <span class='glyphicon glyphicon-chevron-right'></span></button></div></div></div><div class='table-responsive'><table class='table'><thead><tr class='active'><th>Sessions</th><th>Participants</th></tr></thead><tbody>"
+
+      var sessionRows = [];
+
+      for (i = 0; i < study.sessions.length; i++) {
+          sessionRows.push(
+          "<tr>" + 
+            "<td>" + 
+              "<h5>" + study.sessions[i].sessionName + "</h5>" + 
+              "<p><b>Start: </b>" + study.sessions[i].sessionStartDateTime +"</p>" + 
+              "<p><b>End: </b>" + study.sessions[i].sessionEndDateTime + "</p>" +
+            "</td>" +
+            "<td>" + 
+              "<p>" + 25 + " Active</p>" + 
+              "<p>" + 30 + " Completed</p>" + 
+              "<p>" + 20 + " Aborted</p>" + 
+            "</td>" + 
+          "</tr>"
+          );
+      }
+
+      var sessionEnd = "</tbody></table></div></div>"
+
+      jQuery("#sessions").append( sessionHeader + sessionRows.join('') + sessionEnd);
+
+    };
+  </script>
+{% endblock %}
+
 <h1>{{ pageData.title }}</h1>
       <div class="row">
         <div class="col-md-8">
@@ -49,7 +105,7 @@
                 </thead>
                 <tbody class="table-active">
   			    {% for study in studies %}
-                  <tr onclick="_get_all_sessions_by_studyId($studyId={{study.studyId}})">
+                  <tr onclick="getStudyDetails({{study.studyId}})">
                     <td class="text-center">
                     	<!-- Display the correct icon based on study status -->
 						{% if study.status == 'scheduled' %}
@@ -80,74 +136,7 @@
           </div>
         </div>
         <! -- Details Panel -->
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>Study Summary</h4>
-                </div>
-                <div class="col-md-6 text-right">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-print"></span></button>              
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-download-alt"></span></button>
-                  </div>                
-                </div>
-              </div>
-            </div>
-            <div class="panel-body">
-                <a href=""><h5> Eye Tracking</h5></a>
-              <div class="row">
-                <div class="col-md-7">
-                  <p>This is a test study used while developing new code.</p>
-                </div>
-                <div class="col-md-5 text-right">
-                    <button type="button" class="btn btn-default">Details <span class="glyphicon glyphicon-chevron-right"></span></button>              
-                </div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr class="active">
-                    <th>Sessions</th>
-                    <th>Participants</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for session in sessions %}
-                  <tr>
-                    <td>
-                      <h5>{{session.sessionName}}</h5>
-                      <p><b>Start:</b> {{session.sessionStartDateTime | date("M d, Y")}} at {{session.sessionStartDateTime | date("h:ia")}}</p>
-                      <p><b>End:</b> {{session.sessionEndDateTime | date("M d, Y")}} at {{session.sessionEndDateTime | date("h:ia")}}</p>
-                    </td>
-                    <td>
-                      <p>{{session.active}} Active</p>
-                      <p>{{session.completed}} Completed</p>
-                      <p>{{session.aborted}} Aborted</p>
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-<!-- Period Data panel currently not implemented yet
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-md-12">
-                  <h4>Study Periods</h4>
-                </div>
-              </div>
-            </div>
-            <div class="panel-body">
-              <p class="text-center">Period DATA goes here</p>
-            </div>
-          </div>
--->
-       </div>
+        <div class="col-md-4" id="sessions"></div>
      </div>
 
 {% endblock %}

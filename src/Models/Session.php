@@ -6,12 +6,14 @@
 class Session {
 	
 	public function __construct(
+	$studyId = null, 
 	$sessionName = null, 
 	$sessionStartDateTime = null, 
 	$sessionEndDateTime = null, 
 	$active = null,
 	$completed = null,
 	$aborted = null) {
+		$this -> setStudyId($studyId);
 		$this -> setSessionName($sessionName);
 		$this -> setSessionStartDateTime($sessionStartDateTime);
 		$this -> setSessionEndDateTime($sessionEndDateTime);
@@ -20,6 +22,14 @@ class Session {
 		$this -> setAborted($aborted);
 	}
 	
+	public function setStudyId($studyId) {
+		$this -> studyId = $studyId;
+	}
+	
+	public function getStudyId() {
+		return $this -> studyId;
+	}
+
 	public function setSessionName($sessionName) {
 		$this -> sessionName = $sessionName;
 	}

@@ -24,7 +24,7 @@ function studiesGetAll() {
 		// Lets make a new study
 		$newStudy = new Study($row['studyStatus'], 
 		$row['studyName'], 
-		$row['researcherEmail'], 
+		$row['researcherEmail'],
 		$row['studyDescription'],
 		date("Y-m-d",strtotime($row['dateCreated'])),
 		$row['dateModified'],
