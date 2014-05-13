@@ -12,14 +12,25 @@ class Study {
 	$researcherEmail = null, 
 	$description = null,
 	$dateCreated = null,
-	$dateModified = null) {
+	$dateModified = null,
+	$studyId = null) {
 		$this -> setStatus($status);
 		$this -> setName($name);
 		$this -> setResearcherEmail($researcherEmail);
 		$this -> setDescription($description);	
 		$this -> setDateCreated($dateCreated);	
 		$this -> setDateModified($dateModified);
+		$this -> setStudyId($studyId);
 	}
+
+	public function getStudyId() {
+		return $this -> studyId;
+	}
+
+	public function setStudyId($studyId) {
+		$this -> studyId = $studyId;
+	}
+
 	public function getDateModified() {
 		return $this -> dateModified;
 	}

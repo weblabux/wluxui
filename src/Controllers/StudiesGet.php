@@ -24,10 +24,12 @@ function studiesGetAll() {
 		// Lets make a new study
 		$newStudy = new Study($row['studyStatus'], 
 		$row['studyName'], 
-		$row['researcherEmail'], 
+		$row['researcherEmail'],
 		$row['studyDescription'],
 		date("Y-m-d",strtotime($row['dateCreated'])),
-		$row['dateModified']);
+		$row['dateModified'],
+		$row['studyId']);
+
 
 		// Lets push it on to our array ($array)
 		array_push($array, $newStudy);
