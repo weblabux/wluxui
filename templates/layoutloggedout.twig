@@ -24,9 +24,14 @@
     <!--[if lt IE 9]>
     <script src="/wluxui/assets/js/html5shiv.js"></script>
     <![endif]-->
-    
     <script language="javascript" type="text/javascript" src="/wluxui/assets/js/createstudy.js"></script>
-
+    <script src="/wluxui/assets/js/jquery.js"></script>
+    <script src="/wluxui/assets/js/cookies.js"></script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready (function() {
+			$('#userSignInBtn').click(signInBtnClick);	
+		});	
+	</script>
 </head>
 
 <body>
@@ -47,14 +52,14 @@
             <li><a href="/wluxui/index.php/about">ABOUT</a></li>
             <li><a href="/wluxui/index.php/howitworks">HOW IT WORKS</a></li>
             <li><a href="/wluxui/index.php/tutorials">TUTORIALS</a></li>
-          <form class="navbar-form navbar-right" role="form">
+          <form class="navbar-form navbar-right" role="form" action="#">
             <div class="form-group">
-              <input type="text" placeholder="Username" class="form-control">
+              <input type="text" placeholder="Username" class="form-control" id="formUsername">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" class="form-control" id="formPassword">
             </div>
-            <button type="submit" class="btn btn-default">Sign in</button>
+            <button type="submit" class="btn btn-default" id="userSignInBtn">Sign in</button>
           </form>
           </ul>
         </div><!--/.navbar-collapse -->
@@ -74,10 +79,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="jquery.min.js"></script>
-
+    <!-- <script src="jquery.min.js"></script> -->
+	
     <!-- Latest compiled and minified JavaScript -->
+	<!-- using the local version because the net version is tooooooo slooooooow -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--<script src="/wluxui/assets/js/bootstrap.min.js"></script> -->
 
     <!-- Custom JavaScript -->
     <script language="javascript" type="text/javascript" src="/wluxui/assets/js/script.js"></script>
