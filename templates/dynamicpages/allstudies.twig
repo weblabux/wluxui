@@ -1,9 +1,15 @@
 {% extends 'layoutloggedin.twig' %}
 
+
+
 {% block body %}
 
 {% block javascripts %}
+
+	<script src="/wluxui/assets/js/jquery.min.js"></script>
+
   <script type="text/javascript">
+
     var getStudyDetails = function(studyId) {
       var study = {};
       study.sessions = [];
@@ -54,6 +60,17 @@
       jQuery("#sessions").append( sessionHeader + sessionRows.join('') + sessionEnd);
 
     };
+
+  	var studies = [];
+      {% for study in studies %}
+      	studies.push({{study.studyId}});
+      {% endfor %}
+
+	jQuery(document).ready(function() {
+		jQuery('.table-active tr:first-child').click();
+	      getStudyDetails(studies[0]);
+	});
+
   </script>
 {% endblock %}
 
