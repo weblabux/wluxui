@@ -89,14 +89,24 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
             break;
 			
-		case '/general':
-			echo $twig->render('dynamicpages/general.twig', array(     
+        case '/general':
+            echo $twig->render('dynamicpages/general.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - General Study',
-					'submit_text' => 'Continue',
+                    'submit_text' => 'Continue',
                 ),
             ));
-			break;
+            break;
+
+        case '/scheduling':
+            echo $twig->render('dynamicpages/scheduling.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Scheduling',
+                    'submit_text' => 'Continue',
+                ),
+            ));
+            break;
+
 
 		case '/createstudy':
 			echo $twig->render('dynamicpages/newstudy.twig', array(     
