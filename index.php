@@ -67,9 +67,9 @@ $twig->addExtension(new Twig_Extension_Debug());
  *
  *   THIS WILL NEED TO BE RIPPED OUT AND REPLACED WITH WHATEVER MECHANISM WE ARE USING FOR AUTH... 
  */
-//$loggedin = true;
+$loggedin = true;
 //$loggedin = false;
-$loggedin = !is_null($_COOKIE['weblabuxToken']);
+//$loggedin = !is_null($_COOKIE['weblabuxToken']);
 
 /* 
  * MAIN UI BRANCH & SWITCH 
@@ -130,6 +130,15 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
 			echo $twig->render('dynamicpages/session.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
+					'submit_text' => 'Submit',
+                ),
+            ));
+			break;
+			
+		case '/tutorial':
+			echo $twig->render('dynamicpages/tutorial.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX Tutorial',
 					'submit_text' => 'Submit',
                 ),
             ));

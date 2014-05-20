@@ -92,3 +92,32 @@ footer {
 .glyphicon-padding-right {
 	padding-right: 10px;
 }
+
+/* 0 Studies Tutorial */
+#zs-body {
+	padding-top: 0;
+}
+.zs-container {
+	margin-top: 100px;
+	height: 850px;
+	width: 1260px;
+	background-image: url('/wluxui/templates/dynamicpages/tutorial.jpg');
+	background-position: -50px -73px;
+	background-size: 1370px 850px;
+	background-repeat: no-repeat;
+}
+#zs-submit {
+	background-image: url('/wluxui/templates/dynamicpages/tutorialbutton.jpg');
+	background-position: center;
+	border: 4px solid white;
+	border-radius: 3px;
+	width: 162px;
+	height: 45px;
+	position:relative;
+	left: 645px;
+	top: 217px;
+}
+#zs-submit:hover {
+	border: 5px solid white;
+	border-radius: 10px;
+}
