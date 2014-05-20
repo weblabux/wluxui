@@ -90,14 +90,24 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
             break;
 			
-		case '/general':
-			echo $twig->render('dynamicpages/general.twig', array(     
+        case '/general':
+            echo $twig->render('dynamicpages/general.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - General Study',
-					'submit_text' => 'Continue',
+                    'submit_text' => 'Continue',
                 ),
             ));
-			break;
+            break;
+
+        case '/scheduling':
+            echo $twig->render('dynamicpages/scheduling.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Scheduling',
+                    'submit_text' => 'Continue',
+                ),
+            ));
+            break;
+
 
 		case '/createstudy':
 			echo $twig->render('dynamicpages/newstudy.twig', array(     
@@ -108,7 +118,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
 			break;
 			
-		case '/createstudy-protocol':
+		case '/protocol':
 			echo $twig->render('dynamicpages/protocol.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
@@ -117,7 +127,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
 			break;
 			
-		case '/createstudy-variables':
+		case '/variables':
 			echo $twig->render('dynamicpages/variables.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',

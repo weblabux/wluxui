@@ -2,25 +2,61 @@
 
 {% block body %}
 
-<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
-<ul class="row submenu">
-	<li id="menutitle">Create New Study</li>
-	<li>General</li>
-	<li>Protocol</li>
-	<li>Variables</li>
-	<li>Session</li>
-</ul>
-<div class="arrow-down" id="protocol_triangle"></div>
+
 <div class="row">
-	<form id="createstudy" action="createstudy-variables" method="post">
-		<h2>Pre-Study</h2>
-		<p class="subtext" id="new_prestudy">+ Add New Pre Study Component</p>
-		<h2>Tasks</h2>
-		<p class="subtext" id="new_task">+ Add New Task</p>
-		<h2>Post-Study</h2>
-		<p class="subtext" id="new_poststudy">+ Add New Post-Study Component</p>
-		<input id="submit" type="submit" value="{{ pageData.submit_text }}">
-	</form>
+  <div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+  <!-- Form Header Panel -->
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Test Study [#]</h3>
+        </div>
+        <div class="col-md-8">
+          <!-- Progress to create Study-->
+          <p>
+          <ul class="nav nav-pills">
+            <li><a href="general">General</a></li>
+            <li><a href="variables">Variables</a></li>
+            <li class="active"><a href="protocol">Protocol</a></li>
+            <li><a href="scheduling">Scheduling</a></li>
+          </ul>
+        </p>
+        </div>
+      </div>
+    </div>
+  <!-- Form Content Panel -->
+    <div class="panel-body panel-heading">
+	    <form class="form-horizontal" role="form">
+
+
+		<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
+		<ul class="row submenu">
+			<li id="menutitle">Create New Study</li>
+			<li>General</li>
+			<li>Protocol</li>
+			<li>Variables</li>
+			<li>Session</li>
+		</ul>
+		<div class="arrow-down" id="protocol_triangle"></div>
+		<div class="row">
+			<form id="createstudy" action="createstudy-variables" method="post">
+				<h2>Pre-Study</h2>
+				<p class="subtext" id="new_prestudy">+ Add New Pre Study Component</p>
+				<h2>Tasks</h2>
+				<p class="subtext" id="new_task">+ Add New Task</p>
+				<h2>Post-Study</h2>
+				<p class="subtext" id="new_poststudy">+ Add New Post-Study Component</p>
+				<input id="submit" type="submit" value="{{ pageData.submit_text }}">
+			</form>
+		</div>
+
+
+
+	    </form>
+    </div>
+  </div>
+  </div>
 </div>
 
 {% endblock %}
