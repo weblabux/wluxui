@@ -117,7 +117,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
 			break;
 			
-		case '/createstudy-protocol':
+		case '/protocol':
 			echo $twig->render('dynamicpages/protocol.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
@@ -126,7 +126,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
 			break;
 			
-		case '/createstudy-variables':
+		case '/variables':
 			echo $twig->render('dynamicpages/variables.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
