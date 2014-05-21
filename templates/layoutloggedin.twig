@@ -33,6 +33,14 @@
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
+        <div id="user-name" class="pull-right">
+            <a href="#/" class="dropdown-toggle" data-toggle="dropdown">Hi, [username] <b class="caret"></b></a> 
+            <a href="#/"><span class="glyphicon glyphicon-question-sign"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#/signout">Sign Out</a></li>
+            </ul>
+        </div>
+        <div style="clear: both;"></div>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -47,13 +55,15 @@
             <li><a href="/wluxui/index.php/allstudies">ALL STUDIES</a></li>
             <li><a href="/wluxui/index.php/resources">RESOURCES</a></li>
             <li><a href="/wluxui/index.php/collaborators">COLLABORATORS</a></li>
-            <li class="dropdown">
-                <a href="#/" class="dropdown-toggle" data-toggle="dropdown">Hi, [username] <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="">Sign Out</a></li>
-                </ul>
-            </li>
           </ul>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="input-group">
+              <input type="text" class="form-control input-xs" placeholder="Search...">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
