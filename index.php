@@ -25,8 +25,9 @@
  
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/src/Models/Study.php';
-require __DIR__.'/src/Controllers/StudiesGet.php';
 require __DIR__.'/src/Models/Session.php';
+require __DIR__.'/src/Controllers/StudyGet.php';
+require __DIR__.'/src/Controllers/StudiesGet.php';
 require __DIR__.'/src/Controllers/SessionsGet.php';
 /*
  * Within WebLabUX, every user-facing page (for the researcher) is rendered using Twig templates. 
@@ -67,9 +68,9 @@ $twig->addExtension(new Twig_Extension_Debug());
  *
  *   THIS WILL NEED TO BE RIPPED OUT AND REPLACED WITH WHATEVER MECHANISM WE ARE USING FOR AUTH... 
  */
-//$loggedin = true;
+$loggedin = true;
 //$loggedin = false;
-$loggedin = !is_null($_COOKIE['weblabuxToken']);
+//$loggedin = !is_null($_COOKIE['weblabuxToken']);
 
 /* 
  * MAIN UI BRANCH & SWITCH 
@@ -96,6 +97,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - General Study',
                     'submit_text' => 'Continue',
                 ),
+                'study' => studyGet(),
             ));
             break;
 
