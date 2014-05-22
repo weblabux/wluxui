@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 -- Database: `wlux_services`
 --
 
+USE 'wlux_services';
+
 --
 -- Truncate table before insert `study_periods`
 --
