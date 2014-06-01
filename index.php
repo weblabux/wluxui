@@ -70,6 +70,9 @@ $twig->addExtension(new Twig_Extension_Debug());
 //$loggedin = true;
 //$loggedin = false;
 $loggedin = !is_null($_COOKIE['weblabuxToken']);
+//$loggedin = true;
+//$loggedin = false;
+
 
 /* 
  * MAIN UI BRANCH & SWITCH 
@@ -90,6 +93,15 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
             break;
 			
+		case '/general':
+			echo $twig->render('dynamicpages/general.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - General Study',
+					'submit_text' => 'Continue',
+                ),
+            ));
+			break;
+
         case '/general':
             echo $twig->render('dynamicpages/general.twig', array(     
                 'pageData' => array(
