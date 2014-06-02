@@ -40,6 +40,7 @@ function _get_all_sessions($studyId = NULL, $studyPeriodId = NULL, $link = NULL,
 		
 	}
 	
+	//Close the connection
 	mysqli_close($link);
 	
 	return $array;
