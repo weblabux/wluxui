@@ -107,7 +107,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - Scheduling',
                     'submit_text' => 'Continue',
                 ),
-                'schedule' => scheduleStudy(), //Not implementd
+                //'schedule' => scheduleStudy(), //Not implementd
             ));
             break;
 
@@ -118,7 +118,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - Create Study',
 					'submit_text' => 'Continue',
                 ),
-                'create' => createStudy(), //Not implemented
+                //'create' => createStudy(), //Not implemented
             ));
 			break;
 			
@@ -128,7 +128,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - Create Study',
 					'submit_text' => 'Continue',
                 ),
-                protocol => studyProtocol(), //Not implemented
+                //'protocol' => studyProtocol(), //Not implemented
             ));
 			break;
 			
