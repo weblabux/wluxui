@@ -5,7 +5,6 @@
  * layout page design (see photoshop page layout designs)
  */
 class Study {
-	private $name;
 	
 	public function __construct(
 	$status = null, 
@@ -13,14 +12,25 @@ class Study {
 	$researcherEmail = null, 
 	$description = null,
 	$dateCreated = null,
-	$dateModified = null) {
+	$dateModified = null,
+	$studyId = null) {
 		$this -> setStatus($status);
 		$this -> setName($name);
 		$this -> setResearcherEmail($researcherEmail);
 		$this -> setDescription($description);	
 		$this -> setDateCreated($dateCreated);	
 		$this -> setDateModified($dateModified);
+		$this -> setStudyId($studyId);
 	}
+
+	public function getStudyId() {
+		return $this -> studyId;
+	}
+
+	public function setStudyId($studyId) {
+		$this -> studyId = $studyId;
+	}
+
 	public function getDateModified() {
 		return $this -> dateModified;
 	}
@@ -69,39 +79,4 @@ class Study {
 		$this -> researcherEmail = $researcherEmail;
 	}
 }
-
-// <?php
-// 
-// /**
- // * A test "Study" class to use when rendering all studies
- // */
-// class Study
-// {
-    // private $name;
-// 
-    // public function __construct($name = null, $url = null)
-    // {
-        // $this->setName($name);
-        // $this->setUrl($url);
-    // }
-// 
-    // public function getName()
-    // {
-        // return $this->name;
-    // }
-// 
-    // public function setName($name)
-    // {
-        // $this->name = $name;
-    // }
-// 
-    // public function getUrl()
-    // {
-        // return $this->url;
-    // }
-// 
-    // public function setUrl($url)
-    // {
-        // $this->url = $url;
-    // }
-// }
+?>

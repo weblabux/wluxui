@@ -26,7 +26,8 @@
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/src/Models/Study.php';
 require __DIR__.'/src/Controllers/StudiesGet.php';
-
+require __DIR__.'/src/Models/Session.php';
+require __DIR__.'/src/Controllers/SessionsGet.php';
 /*
  * Within WebLabUX, every user-facing page (for the researcher) is rendered using Twig templates. 
  * The UI loop for researcher-facing WebLabUX is contained within this index.php file, and specific
@@ -66,8 +67,11 @@ $twig->addExtension(new Twig_Extension_Debug());
  *
  *   THIS WILL NEED TO BE RIPPED OUT AND REPLACED WITH WHATEVER MECHANISM WE ARE USING FOR AUTH... 
  */
-$loggedin = true;
-//$loggedin = false;
+//$loggedin = true;
+$loggedin = false;
+if(isset($_COOKIE['weblabuxToken'])) {
+    $loggedin = true;
+}
 
 /* 
  * MAIN UI BRANCH & SWITCH 
@@ -84,9 +88,38 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - All Studies',
                 ),
                 'studies' => studiesGetAll(),
+                'sessions' => sessionsGetAll(),
             ));
             break;
 			
+		case '/general':
+			echo $twig->render('dynamicpages/general.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - General Study',
+					'submit_text' => 'Continue',
+                ),
+            ));
+			break;
+
+        case '/general':
+            echo $twig->render('dynamicpages/general.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - General Study',
+                    'submit_text' => 'Continue',
+                ),
+            ));
+            break;
+
+        case '/scheduling':
+            echo $twig->render('dynamicpages/scheduling.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX - Scheduling',
+                    'submit_text' => 'Continue',
+                ),
+            ));
+            break;
+
+
 		case '/createstudy':
 			echo $twig->render('dynamicpages/newstudy.twig', array(     
                 'pageData' => array(
@@ -96,7 +129,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
 			break;
 			
-		case '/createstudy-protocol':
+		case '/protocol':
 			echo $twig->render('dynamicpages/protocol.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
@@ -105,7 +138,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
 			break;
 			
-		case '/createstudy-variables':
+		case '/variables':
 			echo $twig->render('dynamicpages/variables.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
@@ -118,6 +151,15 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
 			echo $twig->render('dynamicpages/session.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - Create Study',
+					'submit_text' => 'Submit',
+                ),
+            ));
+			break;
+			
+		case '/tutorial':
+			echo $twig->render('dynamicpages/tutorial.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX Tutorial',
 					'submit_text' => 'Submit',
                 ),
             ));
@@ -188,4 +230,4 @@ else {                  // Render static pages for someone who is not logged int
             ));
     }
 }
-
+?>

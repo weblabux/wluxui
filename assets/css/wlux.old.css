@@ -94,7 +94,6 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
     
 }
 
-<<<<<<< HEAD
 #home-intro{
     float: left;
 }
@@ -122,70 +121,10 @@ h1.wlux-static-info {                /*  use h1 for the in-page content title on
 }
 
     
-
-/* Create study page CSS starts here */
-.submenu {
-	box-shadow: 0px 5px #E7E7E7;
-	padding-bottom: 5px;
-	margin-bottom: 0;
-}
-
-.submenu  li{
-	display: inline;
-	margin-right: 20px;
-}
-
-.submenu #menutitle {
-	font-size: 22pt;
-}
-
-.form_label {
-	float: left;
-	clear: both;
-	margin-top: 5px;
-}
-
-.create_study_general #study .form_label, 
-.create_study_general #researcher .form_label {
-	margin-left: 4em;
-}
-
-.create_study_general #study .form_label {
-	width: 7em;
-}
-
-.create_study_general #researcher .form_label, 
-.create_study_session #session .form_label, 
-.create_study_variables #variable .form_label{
-	width: 12em;
-}
-
-.create_study_general #study input, 
-.create_study_general #study textarea{
-	width: 30em;
-}
-
-.create_study_variables #variable input, 
-.create_study_variables #variable textarea {
-	width: 24em;
-}
-
-.create_study_general #study textarea{
-	height: 8em;
-}
-
-.create_study_general #researcher input {
-	width: 18em;
-}
-
-#createstudy input[type="number"] {
-	width: 5em;
-=======
 /*ADDED WINTER 2014 BY ANTONIO RODRIGUEZ*/
 #wrapper {
     width: 1070px;
     margin: 0;
->>>>>>> 46205900642d670af0d773e6dab343d6c35f07ff
 }
 
 #left_column {

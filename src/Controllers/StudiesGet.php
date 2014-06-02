@@ -20,15 +20,16 @@ function studiesGetAll() {
 	// ** researchers email, study name and study description
 	
 	while ($row = mysqli_fetch_array($result)) { // While we still have rows
-		//echo $row['studyId'];
-		
+
 		// Lets make a new study
 		$newStudy = new Study($row['studyStatus'], 
 		$row['studyName'], 
-		$row['researcherEmail'], 
+		$row['researcherEmail'],
 		$row['studyDescription'],
-		$row['dateCreated'],
-		$row['dateModified']);
+		date("Y-m-d",strtotime($row['dateCreated'])),
+		$row['dateModified'],
+		$row['studyId']);
+
 
 		// Lets push it on to our array ($array)
 		array_push($array, $newStudy);
@@ -37,7 +38,7 @@ function studiesGetAll() {
 		//var_dump($newStudy);
 		//var_dump($array);
 	}
-
+	
 	// Lets return our array
 	return $array;
 
@@ -54,3 +55,4 @@ function studiesGetAll() {
 	// new Study('Layout Study', '/wluxui/index.php/allstudies/#'),
 	// );
 }
+?>

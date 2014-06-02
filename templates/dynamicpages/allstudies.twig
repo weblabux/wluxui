@@ -1,88 +1,159 @@
 {% extends 'layoutloggedin.twig' %}
 
+
+
 {% block body %}
 
-<h1 class="row wlux-static-info">{{ pageData.title }}</h1>
-<h3>Studies Running Complete Draft Archived</h3>
-<div id="wrapper">
-    <div id="left_column">
-    <table class="all">
-        <thead class="all_head">
-        	<tr>
-        		<th class="header">Study Name</th>
-        		<th class="header">Status</th>
-        		<th class="header">Date Created</th>
-        		<th class="header"><a href="newstudy.php">+ New Study</a></th>
-        	</tr>
-        </thead>
-        <tbody>
-    {% for study in studies %}
-        	<tr class="all_row">
-	        	<td class="cell">
-	            <em>{{ study.name }}</em> 
-	            <br>
-	            <p class="all_description"> {{ study.description }}</p>
-	            </td>
-	            <td class="cell">
-	             {{study.status}}
-	            </td>
-	            <td class="cell">
-	             {{study.dateCreated}}
-	            </td>
-	            <td class="cell">
-	            <form class="all_more" method="post">
-	            <button name="more" type="submit" value="{{study.name}}" id="{{study.name}}">Study Details ></button> 
-	            </form>
-	            </td>
-            </tr>
-    {% endfor %}
-    	</tbody>
-    	</table>
-	</div>
-	
-    <div id="right_column">
-    <table class="right">
-        <thead class="all_head">
-        	<tr>
-        		<th class="header">Study Details
-        		<div id="right_table_options">
-        		<a href="#">Edit</a>
-        		<span> | </span>
-        		<a href="#">Data</a>
-        		</div>
-        		</th>
-    		</tr>
-		</thead>
-		<tbody>
-			<tr class="right_row">
-				<td class="right_title">studyName --should be hyperlinked--</td>
-			</tr>
-        	<tr class="all_row_right"> 
-				<td><p>Last Modified: dateModified</p></td>
-			</tr>
-			<tr class ="all_row_right">
-				<td><p>Organization: researcherOrg</p></td>
-			</tr>
-		</tbody>
-	</table>
-	
-	<table class="right">
-		<thead class="all_head"
-			<tr>
-        		<th class="header">Study Periods</th>
-    		</tr>
-		</thead>
-		<tbody>
-			<tr class="right_row">
-				<td class="right_title"><p>Period DATA goes here</p></td>
-			</tr>
-		</tbody>
-	</table>  
-    
-	</div>
-	<!-- END right_column -->
-</div> 
-<!-- END wrapper -->
-{% endblock %}
- 
+{% block javascripts %}
 
+	<script src="/wluxui/assets/js/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+    var getStudyDetails = function(studyId) {
+      var study = {};
+      study.sessions = [];
+      {% for study in studies %}
+        if ({{study.studyId}} == studyId) {
+          study.name = "{{study.name}}"
+          study.description = "{{study.description}}"
+        }
+      {% endfor %}
+      {% for session in sessions %}
+        if ({{session.studyId}} == studyId) {
+          var session = {
+            sessionName: "{{session.sessionName}}",
+            sessionStartDateTime : "{{session.sessionStartDateTime | date("M d, Y")}} at {{session.sessionStartDateTime | date("h:ia")}}",
+            sessionEndDateTime : "{{session.sessionEndDateTime | date("M d, Y")}} at {{session.sessionEndDateTime | date("h:ia")}}"
+          };
+          study.sessions.push(session);
+        }
+      {% endfor %}
+//      console.log(JSON.stringify(study));
+
+
+      jQuery("#sessions").html("");
+
+      var sessionHeader = "<div class='panel panel-default'><div class='panel-heading'><div class='row'><div class='col-md-6'><h4>Study Summary</h4></div><div class='col-md-6 text-right'><div class='btn-group'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-print'></span></button><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-download-alt'></span></button></div></div></div></div><div class='panel-body'><h4>" + study.name + "</h4><div class='row'><div class='col-md-7'><p>" + study.description + "</p></div><div class='col-md-5 text-right'><button type='button' class='btn btn-default'>Details <span class='glyphicon glyphicon-chevron-right'></span></button></div></div></div><div class='table-responsive'><table class='table'><thead><tr class='active'><th>Sessions</th><th>Participants</th></tr></thead><tbody>"
+
+      var sessionRows = [];
+
+      for (i = 0; i < study.sessions.length; i++) {
+          sessionRows.push(
+          "<tr>" + 
+            "<td>" + 
+              "<h5>" + study.sessions[i].sessionName + "</h5>" + 
+              "<p><b>Start: </b>" + study.sessions[i].sessionStartDateTime +"</p>" + 
+              "<p><b>End: </b>" + study.sessions[i].sessionEndDateTime + "</p>" +
+            "</td>" +
+            "<td>" + 
+              "<p>" + 25 + " Active</p>" + 
+              "<p>" + 30 + " Completed</p>" + 
+              "<p>" + 20 + " Aborted</p>" + 
+            "</td>" + 
+          "</tr>"
+          );
+      }
+
+      var sessionEnd = "</tbody></table></div></div>"
+
+      jQuery("#sessions").append( sessionHeader + sessionRows.join('') + sessionEnd);
+
+    };
+
+  	var studies = [];
+      {% for study in studies %}
+      	studies.push({{study.studyId}});
+      {% endfor %}
+
+	jQuery(document).ready(function() {
+		jQuery('.table-active tr:first-child').click();
+	      getStudyDetails(studies[0]);
+	});
+
+  </script>
+{% endblock %}
+
+<h1>{{ pageData.title }}</h1>
+      <div class="row">
+        <div class="col-md-8">
+	        <! -- Status Panel -->
+            <div class="table-responsive">
+			<table class="table">
+                <tbody>
+                  <tr class="text-center">
+                    <td>
+                      <h4>TOTAL STUDIES</h4>
+                      <span id="dashboard-total-studies">14</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-repeat glyphicon-padding-right"></span> RUNNING</h5>
+                      <span class="dashboard-icons">10</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-ok glyphicon-padding-right"></span> COMPLETE</h5>
+                      <span class="dashboard-icons">3</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-pencil glyphicon-padding-right"></span> DRAFT</h5>
+                      <span class="dashboard-icons">1</span>
+                    </td>
+                    <td>
+                      <h5> <span class="glyphicon glyphicon-book glyphicon-padding-right"></span> ARCHIVED</h5>
+                      <span class="dashboard-icons">0</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+	        <! -- Studies Panel -->
+          <div class="panel panel-default">
+            <div class="panel-heading text-right">
+                <a href="/newstudy.php"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create Study</button></a>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Date Created</th>
+                  </tr>
+                </thead>
+                <tbody class="table-active">
+  			    {% for study in studies %}
+                  <tr onclick="getStudyDetails({{study.studyId}})">
+                    <td class="text-center">
+                    	<!-- Display the correct icon based on study status -->
+						{% if study.status == 'scheduled' %}
+						<span class="glyphicon glyphicon-repeat
+						"></span>
+						{% endif %}
+						{% if study.status == 'completed' %}
+						<span class="glyphicon glyphicon-ok"></span>
+						{% endif %}
+						{% if study.status == 'draft' %}
+						<span class="glyphicon glyphicon-pencil"></span>
+						{% endif %}
+						{% if study.status == 'archived' %}
+						<span class="glyphicon glyphicon-book"></span>
+						{% endif %}
+                      <p>{{study.status}}</p>
+                    </td>
+                    <td>
+                      <a href="">{{study.name}}</a>
+                      <p>{{study.description}}</p>
+                    </td>
+                    <td>{{study.dateCreated | date("M d, Y")}} at {{study.dateCreated | date("h:ia")}}</td>
+                  </tr>
+  			    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <! -- Details Panel -->
+        <div class="col-md-4" id="sessions"></div>
+     </div>
+
+{% endblock %}
