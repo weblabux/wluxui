@@ -121,3 +121,72 @@ footer {
 	border: 5px solid white;
 	border-radius: 10px;
 }
+
+/* Create Study Variables */
+#cs-conditions .control-label{
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.cs-extrarow a {
+	font-size: 12px;
+	text-decoration: none;
+}
+.cs-row {
+	height: 40px;
+	width: auto;
+}
+.cs-extrarow {
+	clear: left;
+	margin-bottom: 15px;
+}
+.cs-column {
+	margin-left: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	float: left;
+	width: 100px;
+	text-align: center;
+}
+#cs-conditions {
+	border-radius: 10px;
+	background-color: lightgrey;
+}
+#cs-conditions-inner {
+	border-radius: 10px;
+	background-color: #f8f8f8;
+	height: 300px;
+	padding: 10px;
+}
+#cs-conditions-inner-content {
+	height: 100%;
+	padding: 10px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+#cs-conditions-inner ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+#cs-left-container {
+	overflow-y: scroll;
+	height: 350px;
+}
+.cs-buttons {
+	position: relative;
+	margin-top: 50px;
+	bottom:3px;
+	right: 28px;
+}
+.cs-variables-extrabuttons {
+	position: absolute;
+	left: 33%;
+}
+.cs-variation {
+	margin-left: 28%;
+	margin-right: 10%;
+	height: 45px;
+}
+#tempvar {
+	display: none;
+}
