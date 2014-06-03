@@ -25,8 +25,9 @@
  
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/src/Models/Study.php';
-require __DIR__.'/src/Controllers/StudiesGet.php';
 require __DIR__.'/src/Models/Session.php';
+require __DIR__.'/src/Controllers/StudyGet.php'; 
+require __DIR__.'/src/Controllers/StudiesGet.php';
 require __DIR__.'/src/Controllers/SessionsGet.php';
 /*
  * Within WebLabUX, every user-facing page (for the researcher) is rendered using Twig templates. 
@@ -67,11 +68,9 @@ $twig->addExtension(new Twig_Extension_Debug());
  *
  *   THIS WILL NEED TO BE RIPPED OUT AND REPLACED WITH WHATEVER MECHANISM WE ARE USING FOR AUTH... 
  */
-//$loggedin = true;
-$loggedin = false;
-if(isset($_COOKIE['weblabuxToken'])) {
-    $loggedin = true;
-}
+$loggedin = true;
+//$loggedin = false;
+//$loggedin = !is_null($_COOKIE['weblabuxToken']);
 
 /* 
  * MAIN UI BRANCH & SWITCH 
@@ -92,21 +91,13 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
             ));
             break;
 			
-		case '/general':
-			echo $twig->render('dynamicpages/general.twig', array(     
-                'pageData' => array(
-                    'title' => 'WebLabUX - General Study',
-					'submit_text' => 'Continue',
-                ),
-            ));
-			break;
-
         case '/general':
             echo $twig->render('dynamicpages/general.twig', array(     
                 'pageData' => array(
                     'title' => 'WebLabUX - General Study',
                     'submit_text' => 'Continue',
                 ),
+                'study' => studyGet(),
             ));
             break;
 
@@ -116,6 +107,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - Scheduling',
                     'submit_text' => 'Continue',
                 ),
+                //'schedule' => scheduleStudy(), //Not implementd
             ));
             break;
 
@@ -126,6 +118,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - Create Study',
 					'submit_text' => 'Continue',
                 ),
+                //'create' => createStudy(), //Not implemented
             ));
 			break;
 			
@@ -135,6 +128,7 @@ if ($loggedin) {        // Render dynamic pages for research who is logged into 
                     'title' => 'WebLabUX - Create Study',
 					'submit_text' => 'Continue',
                 ),
+                //'protocol' => studyProtocol(), //Not implemented
             ));
 			break;
 			
