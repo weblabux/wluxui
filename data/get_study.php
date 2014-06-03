@@ -1,9 +1,11 @@
 <?php
 
 /*Modified by Mark Stamnes - These functions are bare bones */
-/* Returns all studies in the study_general table */
+/* Returns a single study//
 
-//$studyID cannot be empty
+/*$studyID cannot be empty... hard coded studyId1234 until we can figure 
+ * out how to pass the studyId from all studies to general
+ */
 function _get_study($studyId = "1234", $link = NULL, $authInfo = NULL, $logData = NULL, $debugState = true) {
 
 	require 'config_files.php';
