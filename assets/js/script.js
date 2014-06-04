@@ -99,9 +99,11 @@ function addvar() {
 	$(col2).append(input1);
 	$(col3).append(input2);
 	$(variation).append(glyphicondiv).append(col2).append(col3);
-	$('.glyphicon-remove').unbind('click').click(delvar);
-	
+
 	thisvariable.after(variation);
+	$('.form-group').find('.glyphicon-remove').each( function() {
+		$(this).unbind('click').click(delvar);
+	});
 };
 
 //Create study delete variation
