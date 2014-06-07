@@ -22,7 +22,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-function _gratuity_post_gratuity ($link, $authInfo, $logData, $debugState) {
+function _gratuity_post_gratuity ($link, $requestBuffer, $debugState) {
 require 'config_files.php';
 require 'db_utils.php';
 	// initialize the response buffer
@@ -30,40 +30,40 @@ require 'db_utils.php';
 	// initialize the debug values
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
-		$response['debug']['cmdData'] = $logData;
+		$response['debug']['requestBuffer'] = $requestBuffer;
 	}
 	// validate the user's access
 	//  ** No access restrictions for this method
 	//
 
-	if (!empty($logData)) {
+	if (!empty($requestBuffer)) {
 		$localErr = '';
 		$fieldName = 'studyId';
-		if (empty($logData[$fieldName])) {
+		if (empty($requestBuffer[$fieldName])) {
 			$localErr['fields'][$fieldName] = "Missing";
 		} else {	
-			if (!is_numeric($logData[$fieldName])) {
+			if (!is_numeric($requestBuffer[$fieldName])) {
 				$localErr['fields'][$fieldName] =  "Must be a number";
 			}
 			// TODO: This should also make sure the studyID is valid
 		}
 		
 		$fieldName = 'periodName';
-		if (empty($logData[$fieldName])) {
+		if (empty($requestBuffer[$fieldName])) {
 			$localErr['fields'][$fieldName] = "Missing";
 		} else {
 			// TODO: This should also make sure the periodName is valid
 		}
 		
 		$fieldName = 'email';
-		if (empty($logData[$fieldName])) {
+		if (empty($requestBuffer[$fieldName])) {
 			$localErr['fields'][$fieldName] = "Missing";
 		}
 		
 		$fieldName = 'comments'; // don't check--it's optional
-		if (empty($logData[$fieldName])) {
+		if (empty($requestBuffer[$fieldName])) {
 			// so add it to the structure 
-			$logData[$fieldName] = '';
+			$requestBuffer[$fieldName] = '';
 		}
 		
 		// if there was an error, return it, otherwise add the record
@@ -74,7 +74,7 @@ require 'db_utils.php';
 		} else {
 			// create a new gratuity_log record 
 				
-			$queryString = format_object_for_SQL_insert (DB_TABLE_GRATUITY_LOG, $logData);
+			$queryString = format_object_for_SQL_insert (DB_TABLE_GRATUITY_LOG, $requestBuffer);
 			$qResult = @mysqli_query($link, $queryString);
 			if (!$qResult) {
 				// SQL ERROR
@@ -84,7 +84,7 @@ require 'db_utils.php';
 			} else {
 				// success
 				// finish start response buffer
-				$response['data'] = $logData;
+				$response['data'] = $requestBuffer;
 			}
 			if ($debugState) {
 				// write detailed sql info

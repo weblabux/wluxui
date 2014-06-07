@@ -37,14 +37,12 @@ if (!$link) {
 } else {
 	$debugState = int_GetDebug($link, 'session', '');
 	$postData = '';
-	$authInfo = authorize_user ($link);
-	$response['debug']['auth'] = $authInfo;
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		// if the data is not in the the post form, try the query string		
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 		
-		$response = _session_get($link, $authInfo, $postData);
+		$response = _session_get($link, $postData);
 	} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// get the request data
 		if (!empty($HTTP_RAW_POST_DATA)) {
@@ -57,7 +55,7 @@ if (!$link) {
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 
-		$response = _session_post($link, $authInfo, $postData);
+		$response = _session_post($link, $postData);
 	} else {
 		// method not supported
 		$errData = get_error_message ($link, 405);

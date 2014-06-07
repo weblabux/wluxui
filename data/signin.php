@@ -33,7 +33,7 @@ $link = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE_NAME);
 if (!$link) {
 	require 'response_500_db_open_error.php';
 } else {
-	$debugState = int_GetDebug($link, 'signIn', '');
+	$debugState = int_GetDebug($link, 'signin', '');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// get the request data
 		if (!empty($HTTP_RAW_POST_DATA)) {

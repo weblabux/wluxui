@@ -27,7 +27,7 @@ require 'session_post_start.php';
 require 'session_post_finishcurrentstep.php';
 require 'session_post_startnextstep.php';
 
-function _session_post ($link, $authInfo, $postData) {
+function _session_post ($link, $postData) {
 	$debugState = int_GetDebug($link, 'session', 'POST');
 	$actionTaken = false;
 	/*
@@ -38,27 +38,27 @@ function _session_post ($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_post_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_post_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'start';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_post_start ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_post_start ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'startNextStep';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_post_startnextstep ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_post_startnextstep ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'finishCurrentStep';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_post_finishcurrentstep ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_post_finishcurrentstep ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

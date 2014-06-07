@@ -30,12 +30,12 @@ require 'study_put_step.php';
 require 'study_put_variable.php';
 require 'study_put_variation.php';
 
-function _study_put($link, $authInfo, $postData) {
+function _study_put($link, $postData) {
 	$debugState = int_GetDebug($link, 'study', 'PUT');
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
-		$response['debug']['auth'] = $authInfo;
+		$response['debug']['link'] = $link;		
 	}	
 	$actionTaken = false;
 	/*
@@ -46,45 +46,45 @@ function _study_put($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'general';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_general ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_general ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'measure';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_measure ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_measure ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     }
 	$action = 'period';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_period ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_period ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'step';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_step ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_step ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'variable';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_variable ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_variable ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'variation';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_put_variation ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_put_variation ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     }	
 	if (!$actionTaken) {

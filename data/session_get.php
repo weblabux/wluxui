@@ -26,7 +26,7 @@
 require 'session_get_config.php';
 require 'session_get_currentstep.php';
 
-function _session_get($link, $authInfo, $postData) {
+function _session_get($link, $postData) {
 	$debugState = int_GetDebug($link, 'session', 'GET');
 	$actionTaken = false;
 	/*
@@ -37,21 +37,21 @@ function _session_get($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_get_config ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_get_config ($link, $authInfo, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_get_config ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_get_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'currentStep';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _session_get_currentstep ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _session_get_currentstep ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

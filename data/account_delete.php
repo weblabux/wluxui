@@ -3,12 +3,11 @@
 /* require files for each command that supports this method */
 require 'account_delete_user.php';
 
-function _account_delete($link, $authInfo, $postData) {
+function _account_delete($link, $postData) {
 	$debugState = int_GetDebug($link, 'account', 'DELETE');
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
-		$response['debug']['auth'] = $authInfo;
 	}
 	$actionTaken = false;
 	/*
@@ -19,15 +18,15 @@ function _account_delete($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _account_delete_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _account_delete_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'user';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _account_delete_user ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _account_delete_user ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

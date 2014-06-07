@@ -16,14 +16,12 @@ if (!$link) {
 } else {
 	$debugState = int_GetDebug($link, 'account', '');
 	$postData = '';
-	$authInfo = authorize_user ($link);
-	$response['debug']['auth'] = $authInfo;
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		// if the data is not in the the post form, try the query string		
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 		
-		$response = _account_get($link, $authInfo, $postData);
+		$response = _account_get($link, $postData);
 	} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// get the request data
 		if (!empty($HTTP_RAW_POST_DATA)) {
@@ -36,7 +34,7 @@ if (!$link) {
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 
-		$response = _account_post($link, $authInfo, $postData);
+		$response = _account_post($link, $postData);
 	} else if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
 		$postData = json_decode(file_get_contents('php://input'), true);
 			// if the data is not in the raw post data, try the post form
@@ -46,7 +44,7 @@ if (!$link) {
 		if (empty($postData)) {
 			$postData = $_GET;
 		}
-		$response = _account_put($link, $authInfo, $postData);
+		$response = _account_put($link, $postData);
 	} else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 		// get the request data
 		$postData = json_decode(file_get_contents('php://input'), true);
@@ -57,7 +55,7 @@ if (!$link) {
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 
-		$response = _account_delete($link, $authInfo, $postData);
+		$response = _account_delete($link, $postData);
 	} else {
 		// method not supported
 		$errData = get_error_message ($link, 405);

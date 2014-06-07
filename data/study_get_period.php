@@ -22,21 +22,64 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-function _study_get_period ($link, $authInfo, $logData, $debugState) {
-require 'config_files.php';
+function _study_get_period ($link, $requestBuffer, $debugState) {
 require 'db_utils.php';
-	// initialize the response buffer
+require 'int_auth.php';
 	$response = '';
-	// initialize the debug values
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
-		$response['debug']['cmdData'] = $logData;
-		$response['debug']['auth'] = $authInfo;
+		$response['debug']['requestBuffer'] = $requestBuffer;
+		$response['debug']['link'] = $link;		
 	}
-    // not implemented
-	$errData = get_error_message ($link, 501);
-	$response['error'] = $errData;
-	
+	// test again to see if we have a good data base link 
+	//  in case we didn't have one on entry and couldn't get one
+	//  from the preceding code
+	if (!is_null($link)) {
+		// get the authentication
+		$authInfo = authorize_user ($link);
+		if ($debugState) {
+			$response['debug']['auth'] = $authInfo;
+		}
+		// TODO: Replace "TRUE" with the authorization check required for this call
+		if (true) {
+		
+			// TODO: Check the $requestBuffer for a study to return. 
+			//   for now, we'll get all of them.
+			$queryString = 'SELECT * FROM `'.DB_TABLE_STUDY_PERIODS.'` WHERE 1';
+		
+			$result = @mysqli_query($link, $queryString);
+			if ($result) {
+				$idx = 0;
+				if (mysqli_num_rows($result)  > 0) {
+					while ($thisRecord = mysqli_fetch_assoc($result))  {
+						$response['data'][$idx] = array_merge($thisRecord);
+						foreach ($response['data'][$idx] as $k => $v) {
+							// set "null" strings to null values
+							if ($v == 'NULL') {
+								$response['data'][$idx][$k] = NULL;
+							}
+						}
+						$idx += 1;
+					}
+				}
+			} else {
+				$localErr = '';
+				$localErr = get_error_message ($link, 404);
+				$localErr['info'] = 'No study records found';
+				$response['error'] = $localErr;
+			}
+			if ($debugState) {
+				// write detailed sql info
+				$localErr = '';
+				$localErr['sqlQuery'] = $queryString;
+				$localErr['sqlError'] =  mysqli_sqlstate($link);
+				$localErr['message'] = mysqli_error($link);
+				$localErr['recordCount'] = $idx;			
+				$response['debug']['sqlSelect1']= $localErr;
+			}
+		}
+	} 
+	// else $response already has an error valur	
 	return $response;
 }
 ?>

@@ -35,8 +35,8 @@ function _signout_post($link, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action])) {
-		$logData = $postData[$action];
-		$response = _study_get_config ($link, $logData);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_config ($link, $requestBuffer);
 		$actionTaken = true;
     } 
 	*/

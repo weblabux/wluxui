@@ -25,12 +25,11 @@
 /* require files for each command that supports this method */
 require 'debug_get_config.php';
 
-function _debug_get($link, $authInfo, $postData) {
+function _debug_get($link, $postData) {
 	$debugState = int_GetDebug($link, 'debug', 'GET');
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
-		$response['debug']['auth'] = $authInfo;
 	}
 	$actionTaken = false;
 	/*
@@ -41,15 +40,15 @@ function _debug_get($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _debug_get_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _debug_get_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _debug_get_config ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _debug_get_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

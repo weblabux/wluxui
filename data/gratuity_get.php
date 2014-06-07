@@ -25,12 +25,11 @@
 /* require files for each command that supports this method */
 require 'gratuity_get_study.php';
 
-function _gratuity_get($link, $authInfo, $postData) {
+function _gratuity_get($link, $postData) {
 	$debugState = int_GetDebug($link, 'gratuity', 'GET');
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
-		$response['debug']['auth'] = $authInfo;
 	}
 	$actionTaken = false;
 	/*
@@ -41,15 +40,15 @@ function _gratuity_get($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _gratuity_get_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _gratuity_get_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'study';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _gratuity_get_study ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _gratuity_get_study ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

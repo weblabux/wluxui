@@ -37,21 +37,21 @@ function _log_post($link, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_post_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_post_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'load';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_post_load ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_post_load ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'transition';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_post_transition ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_post_transition ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

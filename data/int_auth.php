@@ -28,6 +28,11 @@ if (!defined('WLUX_INT_AUTH_FUNCTIONS')) {
 	function authorize_user ($link) {
 	require 'config_files.php';
 		$retVal['access'] = $AUTH_NOT_AUTHORIZED;
+		// 
+		//	TODO: check the browser cookie for authentication. 
+		//		If no cookie, check the header. 
+		//		If no header, return not authorized.
+		//  
 		$headers = getallheaders ();
 		$userPass = '';
 		if (!empty($headers) && !empty($headers['Authorization'])) {

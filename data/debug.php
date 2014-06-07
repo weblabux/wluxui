@@ -22,7 +22,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- require 'config_files.php';
+require 'config_files.php';
 require 'int_debug.php';
 require 'int_auth.php';
 require 'int_get_message.php';
@@ -35,16 +35,14 @@ $link = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE_NAME);
 if (!$link) {
 	require 'response_500_db_open_error.php';
 } else {
-	$debugState = int_GetDebug($link, 'gratuity', '');
+	$debugState = int_GetDebug($link, 'debug', '');
 	$postData = '';
-	$authInfo = authorize_user ($link);
-	$response['debug']['auth'] = $authInfo;
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		// if the data is not in the the post form, try the query string		
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 		
-		$response = _debug_get($link, $authInfo, $postData);
+		$response = _debug_get($link, $postData);
 	} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// get the request data
 		if (!empty($HTTP_RAW_POST_DATA)) {
@@ -57,7 +55,7 @@ if (!$link) {
 		if (empty($postData)) {
 			$postData = $_GET;
 		} 
-		$response = _debug_post($link, $authInfo, $postData);
+		$response = _debug_post($link, $postData);
 	} else {
 		// method not supported
 		$errData = get_error_message ($link, 405);

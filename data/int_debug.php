@@ -29,7 +29,7 @@ if (!defined('WLUX_INT_DEBUG_FUNCTIONS')) {
 	  *   Enable debug mode on PHP instances that are not configured that way by default
 	  */
 	
-	// see if this is being called by a broweser on the same system as the server
+	// see if this is being called by a browser on the same system as the server
 	$test_server = $_SERVER['SERVER_NAME'] == "127.0.0.1" || $_SERVER['SERVER_NAME'] == "localhost" || substr($_SERVER['SERVER_NAME'],0,3) == "192";
 	
 	// set the error level to show errors when running a browser on the server.

@@ -39,33 +39,33 @@ function _log_get($link, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_get_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_get_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
 	$action = 'allStudies';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_get_allstudies ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_get_allstudies ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'session';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_get_session ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_get_session ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'sessions';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_get_sessions ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_get_sessions ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'study';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _log_get_study ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _log_get_study ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {

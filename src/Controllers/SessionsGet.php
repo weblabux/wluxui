@@ -1,59 +1,60 @@
 <?php
 
-/* Returns real data from the database so just ignore Bob's
- * comments below. :) 4/2/2014 Modified by Mark Stamnes Winter 2014*/
-require 'data/get_all_sessions.php';
+/* 
+ * 	Queries the study period information from all studies and formats 
+ * 		the response for the AllStudies page as a PHP array of 
+ *		"Session" objects.
+ *
+ *		TODO: rename Session objects to Period 
+ */
+require 'data/config_files.php';
+require 'data/study_get_period.php';
 
 function sessionsGetAll() {
-
-	// Lets make an empty array-------------------------------------
-	$array = array();
-
-	// Lets call the _get_all_studies function which lives in the
-	// wlux_web_services/web/data folder (see require above)
-	// ** for now this just retrieves all the studies...
-	// ** will change and grow as we move forward
-	$result = _get_all_sessions();
-
-	// Lets process the results of the get all studies call
-	// ** I modified the Study class constructor to take study status, 
-	// ** researchers email, study name and study description
-	
-	while ($row = mysqli_fetch_array($result)) { // While we still have rows
-		//echo $row['studyId'];
-		
-		// Lets make a new study
-		$newSession = new Session($row['studyId'], 
-		$row['periodName'], 
-		$row['periodStartTime'], 		
-		$row['periodStartTime'], 
-		$row['periodEndTime'], 
-		25,
-		30,
-		10);
-
-		// Lets push it on to our array ($array)
-		array_push($array, $newSession);
-		
-		// In case we get errors lets use these for screen dumps of our data
-		//var_dump($newStudy);
-		//var_dump($array);
+	//  this is the array into which we'll put the study periods we get from the database
+	$returnValue = array();
+	// open the database link for this call that is specific to this modules
+	$linkPeriod = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE_NAME);
+	if ($linkPeriod) {
+		$requestBuffer = '';
+		// call the database function
+		$periodBuffer = _study_get_period ($linkPeriod, $requestBuffer, true);
+		// if we got data back, then format it for the UI	
+		if (!empty($periodBuffer['data'])) {
+			foreach ($periodBuffer['data'] as $row) {			
+				// Lets make a new period record. 
+				//  TODO: Change these to be "Period" objects
+				$newPeriod = new Session($row['studyId'], 
+					$row['periodName'], 
+					$row['periodStartTime'], 		
+					$row['periodStartTime'], 
+					$row['periodEndTime'], 
+					25, // hard coded count of active sessions
+					30, // hard coded count of completed sessions
+					10  // hard coded count of abandoned sessions
+					);
+				// Add this period's data to the object being returned
+				array_push($returnValue, $newPeriod);
+			
+			}
+		} else {
+			// no data returned, so 
+			// return the error buffer when debugging
+			//  TODO: Handle authentication errors			
+			/*
+			if (!empty($studyBuffer['error'])) {
+				$returnValue = $studyBuffer['error'];
+			}
+			(*/
+			// Normally, just return the empty array buffer if an 
+			//  error is encountered.
+			//  TODO: Is this the best idea? 
+		}
+		// close DB link
+		@mysqli_close($linkPeriod);
+	} else {
+		// unable to open database link
 	}
-
-	// Lets return our array
-	return $array;
-
-	//Bob's old comments and code
-	// fast and bogus consruction of all studies.
-	// in reality, this would query the server and create an array of studies
-	// that are far more descriptive than this (requires extending Model/Study.php)
-
-	// array(
-	// new Study('Navigation Study', '/wluxui/index.php/allstudies/#'),
-	// new Study('Headings Study', '/wluxui/index.php/allstudies/#'),
-	// new Study('Previewing Study', '/wluxui/index.php/allstudies/#'),
-	// new Study('API Study', '/wluxui/index.php/allstudies/#'),
-	// new Study('Layout Study', '/wluxui/index.php/allstudies/#'),
-	// );
+	return $returnValue;
 }
 ?>

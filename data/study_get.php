@@ -33,13 +33,12 @@ require 'study_get_step.php';
 require 'study_get_variable.php';
 require 'study_get_variation.php';
 
-
-function _study_get($link, $authInfo, $postData) {
+function _study_get($link, $postData) {
 	$debugState = int_GetDebug($link, 'study', 'GET');
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['postData'] = $postData;
-		$response['debug']['auth'] = $authInfo;
+		$response['debug']['link'] = $link;				
 	}	
 	$actionTaken = false;
 	/*
@@ -50,63 +49,66 @@ function _study_get($link, $authInfo, $postData) {
 	* 3. if true, call the function that performs the command
 	$action = 'config';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_config ($link, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_config ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	*/
-	$action = 'allStudyIds';
-	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_allstudyids ($link, $authInfo, $logData, $debugState);
-		$actionTaken = true;
-    } 
-	$action = 'config';
-	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_config ($link, $authInfo, $logData, $debugState);
-		$actionTaken = true;
-    } 
 	$action = 'general';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_general ($link, $authInfo, $logData, $debugState);
-		$actionTaken = true;
-    } 
-	$action = 'measure';
-	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_measure ($link, $authInfo, $logData, $debugState);
-		$actionTaken = true;
-    } 
-	$action = 'name';
-	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_name ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_general ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'period';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_period($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_period($link, $requestBuffer, $debugState);
+		$actionTaken = true;
+    } 	
+	// these are still stubbed.
+	//  TODO: Move each code block from below to above this comment after
+	//    adding the functionality to the function it calls
+	$action = 'allStudyIds';
+	if (!$actionTaken && (!empty($postData[$action]))) {
+		$requestBuffer = $postData[$action];
+		$response = _study_get_allstudyids ($link, $requestBuffer, $debugState);
+		$actionTaken = true;
+    } 
+	$action = 'config';
+	if (!$actionTaken && (!empty($postData[$action]))) {
+		$requestBuffer = $postData[$action];
+		$response = _study_get_config ($link, $requestBuffer, $debugState);
+		$actionTaken = true;
+    } 
+	$action = 'measure';
+	if (!$actionTaken && (!empty($postData[$action]))) {
+		$requestBuffer = $postData[$action];
+		$response = _study_get_measure ($link, $requestBuffer, $debugState);
+		$actionTaken = true;
+    } 
+	$action = 'name';
+	if (!$actionTaken && (!empty($postData[$action]))) {
+		$requestBuffer = $postData[$action];
+		$response = _study_get_name ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'step';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_step  ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_step  ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'variable';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_variable ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_variable ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	$action = 'variation';
 	if (!$actionTaken && (!empty($postData[$action]))) {
-		$logData = $postData[$action];
-		$response = _study_get_variation ($link, $authInfo, $logData, $debugState);
+		$requestBuffer = $postData[$action];
+		$response = _study_get_variation ($link, $requestBuffer, $debugState);
 		$actionTaken = true;
     } 
 	if (!$actionTaken) {
