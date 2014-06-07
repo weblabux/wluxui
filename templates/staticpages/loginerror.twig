@@ -1,0 +1,23 @@
+{% extends 'layoutreset.twig' %}
+
+{% block body %}
+
+<div class="container"> 
+
+    <div><!--Login error part-->
+        <form class="navbar-form navbar-left" role="form" action="#">
+            <h1>Error signing in</h1><br />
+            <h5>The username or password you entered is incorrect</h5><br />
+            <div>
+              <input type="text" placeholder="Username"  class="form-control" id="formUsername"><br /><br />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" class="form-control" id="formPassword"><br /><br />
+            </div>
+            <button type="submit" class="btn btn-default" id="userSignInBtn">Sign in</button>
+             <button type="submit" class="btn btn-default" id="LoginResetBtn">Reset Password</button>
+          </form>
+    </div>
+</div>
+
+{% endblock %}

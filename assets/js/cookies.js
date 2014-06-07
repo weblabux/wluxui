@@ -45,7 +45,7 @@ function signInBtnClick () {
 			// user is not athorized so...
 			// * display error message
 			// for now, we'll just show a message
-			alert ('didn\'t work!');
+			window.location.href = '/wluxui/index.php/loginerror';
 		}
 	});
 }

@@ -220,6 +220,14 @@ else {                  // Render static pages for someone who is not logged int
             ));
             break;
 
+        case '/loginerror':
+            echo $twig->render('staticpages/loginerror.twig', array(     
+                'pageData' => array(
+                    'title' => 'WebLabUX',
+                ),
+            ));
+            break;
+
         // Bad static page URI - treat this as if a 404
         // This is fast placeholder -- this  really needs to be made far more robust!
         default:
