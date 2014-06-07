@@ -45,5 +45,5 @@ require 'inc_db_check.php'; // validates or initializes $link, $authInfo & $resp
 	} 
 	// else $response already has an error valur	
 	return $response;
-
+}
 ?>

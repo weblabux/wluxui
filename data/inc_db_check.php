@@ -41,7 +41,7 @@ if (!defined('WLUX_INC_DB_CHECK')) {
 	define('WLUX_INC_DB_CHECK', 'wlux_inc_db_check', false);
 require 'config_files.php';
 require 'int_auth.php';
-
+    $dbOpenedLocally = false;
 	$response = '';
 	if (is_null($link)) {
 		// the database has not been initialized, so try (again)
@@ -51,6 +51,7 @@ require 'int_auth.php';
 			require 'response_500_db_open_error.php';
 		} else {
 			// we just got access to the database so 
+			$dbOpenedLocally = true;
 			//  get any other information we might be missing
 			//  we don't check the debug state, but we will check the 
 			//  authorization if it wasn't provided

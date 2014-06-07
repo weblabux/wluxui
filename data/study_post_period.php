@@ -22,8 +22,10 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
+function _study_post_period ($link = null, $authInfo = null, $logData = null, $debugState = true) {
 require 'db_utils.php';
 require 'inc_db_check.php'; // validates or initializes $link, $authInfo & $response
+
 	// test again to see if we have a good data base link 
 	//  in case we didn't have one on entry and couldn't get one
 	//  from the preceding code
@@ -44,6 +46,5 @@ require 'inc_db_check.php'; // validates or initializes $link, $authInfo & $resp
 	} 
 	// else $response already has an error valur	
 	return $response;
-
 }
 ?>
