@@ -22,21 +22,25 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
- /* 
-  *   Enable debug mode on PHP instances that are not configured that way by default
-  */
-
-// see if this is being called by a broweser on the same system as the server
-$test_server = $_SERVER['SERVER_NAME'] == "127.0.0.1" || $_SERVER['SERVER_NAME'] == "localhost" || substr($_SERVER['SERVER_NAME'],0,3) == "192";
-
-// set the error level to show errors when running a browser on the server.
-ini_set('display_errors',$test_server);
-error_reporting(E_ALL|E_STRICT);  
- 
-function int_GetDebug($link, $moduleName, $methodName)
-{
-	//everything is debug mode for now.
-	// we'll check the database and return the actual status later
-	return true;
+if (!defined('WLUX_INT_DEBUG_FUNCTIONS')) {
+	define('WLUX_INT_DEBUG_FUNCTIONS', 'wlux_int_debug_functions', false);
+	 
+	 /* 
+	  *   Enable debug mode on PHP instances that are not configured that way by default
+	  */
+	
+	// see if this is being called by a broweser on the same system as the server
+	$test_server = $_SERVER['SERVER_NAME'] == "127.0.0.1" || $_SERVER['SERVER_NAME'] == "localhost" || substr($_SERVER['SERVER_NAME'],0,3) == "192";
+	
+	// set the error level to show errors when running a browser on the server.
+	ini_set('display_errors',$test_server);
+	error_reporting(E_ALL|E_STRICT);  
+	 
+	function int_GetDebug($link, $moduleName, $methodName)
+	{
+		//everything is debug mode for now.
+		// we'll check the database and return the actual status later
+		return true;
+	}
 }
 ?>

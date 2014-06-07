@@ -23,20 +23,59 @@
  *  THE SOFTWARE.
  */
 function _study_get_general ($link, $authInfo, $logData, $debugState) {
-require 'config_files.php';
 require 'db_utils.php';
-	// initialize the response buffer
-	$response = '';
-	// initialize the debug values
+require 'inc_db_check.php'; // validates or initializes $link, $authInfo & $response
+	// test again to see if we have a good data base link 
+	//  in case we didn't have one on entry and couldn't get one
+	//  from the preceding code
+		// initialize the debug values
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['cmdData'] = $logData;
 		$response['debug']['auth'] = $authInfo;
 	}
-    // not implemented
-	$errData = get_error_message ($link, 501);
-	$response['error'] = $errData;
+	if (!is_null($link)) {
+		// this is where the actual function goes
+		//   when there's one to use
+		
+		// TODO: Check authorization required for this call
+		
+		// TODO: Check the $logData for a study to return. 
+		//   for now, we'll get all of them.
+		$queryString = 'SELECT * FROM `study_general` WHERE 1';
+		
+		$result = @mysqli_query($link, $queryString);
+		$idx = 0;
+		if (mysqli_num_rows($result)  > 0) {
+			while ($thisRecord = mysqli_fetch_assoc($result))  {
+				$response['data'][$idx] = array_merge($thisRecord);
+				foreach ($response['data'][$idx] as $k => $v) {
+					// set "null" strings to null values
+					if ($v == 'NULL') {
+						$response['data'][$k] = NULL;
+					}
+				}
+				$idx += 1;
+			}
+		}
+		if ($idx == 0) {
+			$localErr = '';
+			$localErr = get_error_message ($link, 404);
+			$localErr['info'] = 'No study records found';
+			$response['error'] = $localErr;
+		}
+		if ($debugState) {
+			// write detailed sql info
+			$localErr = '';
+			$localErr['sqlQuery'] = $queryString;
+			$localErr['sqlError'] =  mysqli_sqlstate($link);
+			$localErr['message'] = mysqli_error($link);				
+			$response['debug']['sqlSelect1']= $localErr;
+		}
 	
+		mysqli_close($link);
+	} 
+	// else $response already has an error valuE
 	return $response;
 }
 ?>

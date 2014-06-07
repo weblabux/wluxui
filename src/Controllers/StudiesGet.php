@@ -2,13 +2,22 @@
 
 /* Returns real data from the database so just ignore Bob's
  * comments below. :) 4/2/2014 Modified by Mark Stamnes Winter 2014*/
-require 'data/get_all_studies.php';
+require 'data/study_get_general.php';
 
 function studiesGetAll() {
 
 	// Lets make an empty array-------------------------------------
-	$array = array();
-
+	$studyBuffer = _study_get_general (0, 0, '', true);
+	$result = '';
+	if (!empty($studyBuffer['data'])) {
+		$result = $studyBuffer['data'];
+	} else {
+		if (!empty($studyBuffer['error'])) {
+			$result = $studyBuffer['error'];
+		}
+	}
+	
+if (0) {
 	// Lets call the _get_all_studies function which lives in the
 	// wlux_web_services/web/data folder (see require above)
 	// ** for now this just retrieves all the studies...
@@ -38,7 +47,7 @@ function studiesGetAll() {
 		//var_dump($newStudy);
 		//var_dump($array);
 	}
-	
+}
 	// Lets return our array
 	return $array;
 

@@ -22,53 +22,46 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
+/* 
+ *  initialize the response buffer and  database links
+ *   in case they haven't been opened, yet
+ *	
+ *	Expects:
+ *		$link - possible DB link
+ *		$authInfo - possible authorization info block
+ *
+ *	Creates or initilizes:
+ *		$link - a valid DB link
+ *		$authInfo - a valid authorization info block
+ *		$response - an initialized response buffer 
+ *						or a response buffer with an error message
+ *
+ */
+if (!defined('WLUX_INC_DB_CHECK')) {
+	define('WLUX_INC_DB_CHECK', 'wlux_inc_db_check', false);
 require 'config_files.php';
-require 'int_debug.php';
 require 'int_auth.php';
-require 'int_get_message.php';
-require 'session_get.php';
-require 'session_post.php';
 
-$response = '';
-
-$link = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE_NAME);
-if (!$link) {
-	require 'response_500_db_open_error.php';
-} else {
-	$debugState = int_GetDebug($link, 'session', '');
-	$postData = '';
-	$authInfo = authorize_user ($link);
-	$response['debug']['auth'] = $authInfo;
-	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-		// if the data is not in the the post form, try the query string		
-		if (empty($postData)) {
-			$postData = $_GET;
-		} 		
-		$response = _session_get($link, $authInfo, $postData);
-	} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		// get the request data
-		if (!empty($HTTP_RAW_POST_DATA)) {
-			$postData = json_decode($HTTP_RAW_POST_DATA,true);
-		}		
-		// if the data is not in the raw post data, try the post form
-		if (empty($postData)) {
-			$postData = $_POST;
-		}
-		if (empty($postData)) {
-			$postData = $_GET;
-		} 
-		$response = _session_post($link, $authInfo, $postData);
-	} else {
-		// method not supported
-		$errData = get_error_message ($link, 405);
-		$response['error'] = $errData;
-		if ($debugState) {
-			$response['debug']['module'] = __FILE__;
+	$response = '';
+	if (is_null($link)) {
+		// the database has not been initialized, so try (again)
+		$link = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE_NAME);
+		if (!$link) {
+			// no luck, so return a server error
+			require 'response_500_db_open_error.php';
+		} else {
+			// we just got access to the database so 
+			//  get any other information we might be missing
+			//  we don't check the debug state, but we will check the 
+			//  authorization if it wasn't provided
+			if (is_null($authInfo)) {
+				$authInfo = authorize_user ($link);
+				if (is_null($authInfo)) {
+					$authInfo['access'] = $AUTH_NOT_AUTHORIZED;
+				}
+			}
+			// there should be a value in $authInfo here
 		}
 	}
-	mysqli_close($link);
 }
-
-require 'format_response.php';
-print ($fnResponse);
 ?>

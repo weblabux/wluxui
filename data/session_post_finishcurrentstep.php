@@ -23,20 +23,27 @@
  *  THE SOFTWARE.
  */
 function _session_post_finishcurrentstep ($link, $authInfo, $logData, $debugState) {
-require 'config_files.php';
 require 'db_utils.php';
-	// initialize the response buffer
-	$response = '';
-	// initialize the debug values
+require 'inc_db_check.php'; // validates or initializes $link, $authInfo & $response
+	// test again to see if we have a good data base link 
+	//  in case we didn't have one on entry and couldn't get one
+	//  from the preceding code
+		// initialize the debug values
 	if ($debugState) {
 		$response['debug']['module'] = __FILE__;
 		$response['debug']['cmdData'] = $logData;
 		$response['debug']['auth'] = $authInfo;
 	}
-    // not implemented
-	$errData = get_error_message ($link, 501);
-	$response['error'] = $errData;
-	
+	if (!is_null($link)) {
+		// this is where the actual function goes
+		//   when there's one to use
+		// authorization not required for this call
+		
+		// not implemented
+		$errData = get_error_message ($link, 501);
+		$response['error'] = $errData;
+	} 
+	// else $response already has an error valur	
 	return $response;
 }
 ?>
